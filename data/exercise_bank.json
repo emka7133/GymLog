@@ -1,0 +1,20 @@
+{
+    "squats": {
+        "exercise_title": "Squats",
+        "exercise_description": "Squat",
+        
+        "weights_bool": "Yes",
+        "default_weight_kg": 50,
+        "goal_weight": 100,
+        
+        "reps_bool": "Yes",
+        "default_reps": 10,
+        "goal_reps": 10,
+        
+        "sets_bool": "Yes",
+        "default_sets": 3,
+        "goal_sets": 3,
+
+        "tags": ["legs"]
+    }
+}
