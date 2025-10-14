@@ -27,6 +27,8 @@ Logs
     - highlight pb's
 - Workouts
     - exercises / time / date
+    - increase weight reminder for next session
+      (ex: if you do a set and feel like you could do x more kg)
 - over time progress (graphs)
 	- sort by exercise
 	- determine range (week / month / from start)
