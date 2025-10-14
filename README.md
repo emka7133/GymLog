@@ -7,13 +7,10 @@ Exercise Bank
 	- remove exercise
 - Add new exercises
 
-<<<<<<< HEAD
 Workout
 - time
 - weights / reps / sets (from last session (default at the first session))
 - exercises (list)
-=======
->>>>>>> d3235cf (basic framework)
 
 Workout (current)
 	- start / end workout
