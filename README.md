@@ -5,6 +5,7 @@ Create exercises (pre-made object)
 
 Workout
 - time
+- weights / reps / sets (from last session (default at the first session))
 - exercises (list)
 
 History (Logs)
