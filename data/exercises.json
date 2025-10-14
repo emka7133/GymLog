@@ -1,0 +1,27 @@
+[
+    {
+        "id": "squats",
+        "title": "Squats",
+        "description": "A lower-body compound exercise.",
+        "notes": "Chest up, knees out.",
+        "has_weight": true,
+        "default_weight_kg": 50,
+        "goal_weight_kg": 100,
+        "has_reps": true,
+        "default_reps": 10,
+        "goal_reps": 10,
+        "has_sets": true,
+        "default_sets": 3,
+        "goal_sets": 3,
+        "has_time": false,
+        "default_time_sec": 60,
+        "goal_time": 120,
+        "tags": [
+            "legs",
+            "compound"
+        ],
+        "unit": "kg",
+        "created_at": "2025-10-14T13:57:49",
+        "last_updated": "2025-10-14T13:57:49"
+    }
+]
