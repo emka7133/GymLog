@@ -23,5 +23,27 @@
         "unit": "kg",
         "created_at": "2025-10-14T13:57:49",
         "last_updated": "2025-10-14T13:57:49"
+    },
+    {
+        "id": "deadlift",
+        "title": "Deadlift",
+        "description": "Pick it up bro",
+        "tags": [
+            "legs",
+            "compound",
+            "lower-back"
+        ],
+        "has_weight": true,
+        "default_weight_kg": 60.0,
+        "goal_weight_kg": 60.0,
+        "has_reps": true,
+        "default_reps": 8,
+        "goal_reps": 8,
+        "has_sets": true,
+        "default_sets": 2,
+        "goal_sets": 2,
+        "unit": "kg",
+        "created_at": "2025-10-15T08:39:03",
+        "last_updated": "2025-10-15T08:39:03"
     }
 ]

@@ -44,6 +44,7 @@ class GymLogApp(tk.Tk):
         self.tag_entry = ttk.Entry(frame)
         self.tag_entry.pack(side="left", padx=5)
         ttk.Button(frame, text="Search", command=self.search_exercises).pack(side="left", padx=5)
+        ttk.Button(frame, text="Adds Exercise", command=self.open_add_exercise_window).pack(side="left", padx=5)
 
         # Results listbox
         self.exercise_list = tk.Listbox(self.exercise_tab, height=15, width=60)
@@ -65,12 +66,12 @@ class GymLogApp(tk.Tk):
             for ex in results:
                 self.exercise_list.insert(tk.END, f"{ex['title']} ({', '.join(ex['tags'])})")
 
-# ---------- ADD EXERCISE POPUP ----------
+    # ---------- ADD EXERCISE POPUP ----------
     def open_add_exercise_window(self):
         """Open popup for adding a new exercise."""
         popup = tk.Toplevel(self)
         popup.title("Add Exercise")
-        popup.geometry("400x400")
+        popup.geometry("400x500")
         popup.resizable(False, False)
 
         ttk.Label(popup, text="Add New Exercise", font=("Arial", 16)).pack(pady=10)
@@ -129,9 +130,12 @@ class GymLogApp(tk.Tk):
             add_exercise(exercise)
             messagebox.showinfo("Success", f"Added new exercise: {title}")
             popup.destroy()
-            self.load_all_exercises()
         except Exception as e:
             messagebox.showerror("Error", f"Failed to save exercise:\n{e}")
+
+    def exercise_popup(self, popup):
+        
+        return
 
 
 # ---------- RUN APP ----------

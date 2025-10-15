@@ -64,9 +64,4 @@ new_exercise = {
     "created_at": "2025-10-14T12:00:00",
     "last_updated": "2025-10-14T12:00:00"
 }
-
-add_exercise(new_exercise)
 '''
-
-list_exercises()
-edit_exercise("squats", {"goal_weight_kg": 120})
