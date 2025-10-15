@@ -33,14 +33,11 @@ class GymLogApp(tk.Tk):
 
     # ---------- EXERCISE TAB ----------
     def build_exercise_tab(self):
-        title = ttk.Label(self.exercise_tab, text="Exercise Bank", font=("Arial", 18))
-        title.pack(pady=10)
-
         # Search/filter area
         frame = ttk.Frame(self.exercise_tab)
         frame.pack(pady=10)
 
-        ttk.Label(frame, text="Filter by tag:").pack(side="left", padx=5)
+        ttk.Label(frame).pack(side="left", padx=5)
         self.tag_entry = ttk.Entry(frame)
         self.tag_entry.pack(side="left", padx=5)
         ttk.Button(frame, text="Search", command=self.search_exercises).pack(side="left", padx=5)
@@ -133,9 +130,11 @@ class GymLogApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("Error", f"Failed to save exercise:\n{e}")
 
-    def exercise_popup(self, popup):
-        
-        return
+    def exercise_popup(self, popup, ):
+        popup = tk.Toplevel(self)
+        popup.title()
+        popup.geometry("400x500")
+        popup.resizable(False, False)
 
 
 # ---------- RUN APP ----------
