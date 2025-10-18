@@ -21,14 +21,36 @@ class GymLogApp(tk.Tk):
         style.theme_use("clam")
 
         # Create tab control
-        tab_control = ttk.Notebook(self)
-        tab_control.pack(expand=1, fill="both")
+        self.tab_control = ttk.Notebook(self)
+        self.tab_control.pack(expand=1, fill="both")
 
-        # Add tabs (each one is its own class)
-        tab_control.add(ExercisesTab(tab_control), text="Exercise Bank")
-        tab_control.add(WorkoutTab(tab_control), text="Workout Tracker")
-        tab_control.add(LogsTab(tab_control), text="Logs")
-        tab_control.add(SettingsTab(tab_control), text="Settings")
+        # Add tabs
+        self.tabs = [
+            ("Exercise Bank", ExercisesTab(self.tab_control)),
+            ("Workout Tracker", WorkoutTab(self.tab_control)),
+            ("Logs", LogsTab(self.tab_control)),
+            ("Settings", SettingsTab(self.tab_control))
+        ]
+
+        for text, frame in self.tabs:
+            self.tab_control.add(frame, text=text)
+
+        # Configure tab style to stretch
+        self.style = style
+        self.update_tab_widths()  # set initial widths
+        self.tab_control.bind("<Configure>", self.on_resize)  # update widths on resize
+
+    def update_tab_widths(self):
+        tab_count = len(self.tab_control.tabs())
+        if tab_count == 0:
+            return
+        total_width = self.tab_control.winfo_width() or 800  # fallback width
+        tab_width = total_width // tab_count
+        self.style.configure('TNotebook.Tab', width=tab_width, anchor='center', justify='center')
+
+    def on_resize(self, event):
+        self.update_tab_widths()
+
 
 # ---------- RUN APP ----------
 if __name__ == "__main__":
