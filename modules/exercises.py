@@ -5,7 +5,11 @@ from utils.json_handler import load_json, save_json
 EXERCISE_FILE = Path("data/exercises.json")
 
 def load_exercises():
-    return load_json(EXERCISE_FILE)
+    if not EXERCISE_FILE.exists():
+        EXERCISE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        save_json(EXERCISE_FILE, [])
+        return []
+    return load_json(EXERCISE_FILE) or []
 
 def save_exercises(exercises):
     save_json(EXERCISE_FILE, exercises)
@@ -21,7 +25,7 @@ def add_exercise(new_exercise):
     
     exercises.append(new_exercise)
     save_exercises(exercises)
-    print(f"Added exercise: {new_exercise['title']}")
+    return new_exercise
 
 def edit_exercise(exercise_id, updates):
     # Edit existing exercise by ID.
@@ -31,8 +35,7 @@ def edit_exercise(exercise_id, updates):
             ex.update(updates)
             ex["last_updated"] = datetime.now().isoformat(timespec="seconds")
             save_exercises(exercises)
-            print(f"Updated exercise '{exercise_id}'")
-            return
+            return exercise_id
     raise ValueError(f"No exercise found with id '{exercise_id}'")
 
 def remove_exercise(exercise_id):
@@ -44,26 +47,34 @@ def remove_exercise(exercise_id):
         raise ValueError(f"No exercise found with id '{exercise_id}'")
     
     save_exercises(updated)
-    print(f"Removed exercise '{exercise_id}'")
+    return exercise_id
 
 def list_exercises():
     # Return all exercises (sorted alphabetically).
     exercises = load_exercises()
     return sorted(exercises, key=lambda x: x["title"].lower())
 
+def get_exercise_by_id(exercise_id):
+    exercises = load_exercises()
+    for ex in exercises:
+        if ex["id"] == exercise_id:
+            return ex
+    return None
+
 def get_exercises_by_tag(tags=None, sort_alpha=True):
     exercises = load_exercises()
     if not exercises:
         return []
 
-    if tags is None:
+    if not tags:
         filtered = exercises
     else:
         if isinstance(tags, str):
             tags = [tags]
+        tags = [t.lower() for t in tags]
         filtered = [
-            ex for ex in exercises 
-            if any(tag.lower() in [t.lower() for t in ex.get("tags", [])] for tag in tags)
+            ex for ex in exercises
+            if any(t.lower() in tags for t in ex.get("tags", []))
         ]
 
     if sort_alpha:
