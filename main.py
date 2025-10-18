@@ -1,11 +1,10 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
-from datetime import datetime
+from tkinter import ttk
 
 from tabs.exercises_tab import ExercisesTab
-#from tabs.workout_tab import WorkoutTab
-#from tabs.logs_tab import LogsTab
-#from tabs.settings_tab import SettingsTab
+from tabs.workout_tab import WorkoutTab
+from tabs.logs_tab import LogsTab
+from tabs.settings_tab import SettingsTab
 
 # ---------- MAIN APP ----------
 class GymLogApp(tk.Tk):
@@ -14,7 +13,7 @@ class GymLogApp(tk.Tk):
 
         self.title("Gym Log App")
         self.geometry("800x600")
-        self.minsize(700, 500)
+        self.minsize(500, 500)
 
         # Style
         style = ttk.Style(self)
@@ -27,9 +26,9 @@ class GymLogApp(tk.Tk):
 
         # Add tabs (each one is its own class)
         tab_control.add(ExercisesTab(tab_control), text="Exercise Bank")
-        #tab_control.add(WorkoutTab(tab_control), text="Workout Tracker")
-        #tab_control.add(LogsTab(tab_control), text="Logs")
-        #tab_control.add(SettingsTab(tab_control), text="Settings")
+        tab_control.add(WorkoutTab(tab_control), text="Workout Tracker")
+        tab_control.add(LogsTab(tab_control), text="Logs")
+        tab_control.add(SettingsTab(tab_control), text="Settings")
 
 # ---------- RUN APP ----------
 if __name__ == "__main__":

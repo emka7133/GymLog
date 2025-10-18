@@ -38,8 +38,6 @@ Settings
 
 
 
-from modules.exercises import add_exercise, list_exercises, edit_exercise
-
 # Example exercise dictionary
 '''
 new_exercise = {

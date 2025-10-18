@@ -61,20 +61,18 @@ def get_exercise_by_id(exercise_id):
             return ex
     return None
 
-def get_exercises_by_tag(tags=None, sort_alpha=True):
+def search_exercises(query=None, sort_alpha=True):
     exercises = load_exercises()
     if not exercises:
         return []
 
-    if not tags:
+    if not query:
         filtered = exercises
     else:
-        if isinstance(tags, str):
-            tags = [tags]
-        tags = [t.lower() for t in tags]
+        q = query.lower()
         filtered = [
             ex for ex in exercises
-            if any(t.lower() in tags for t in ex.get("tags", []))
+            if q in ex["title"].lower() or any(q in t.lower() for t in ex.get("tags", []))
         ]
 
     if sort_alpha:
