@@ -3,23 +3,39 @@
         "id": "deadlift",
         "title": "Deadlift",
         "description": "Pick it up bro",
-        "tags": ["legs", "compound", "lower-back"],
-        "has_weight": true,
-        "default_weight_kg": 60.0,
-        "goal_weight_kg": 80.0,
-        "has_reps": true,
-        "default_reps": 8,
-        "goal_reps": 10,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 4,
-        "has_time": false,
-        "default_time": 0,
-        "goal_time": 0,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "kg",
+        "tags": [
+            "legs",
+            "compound",
+            "lower-back"
+        ],
+        "weight": {
+            "has": true,
+            "default": 60.0,
+            "goal": 80.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8,
+            "goal": 10
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-15T08:39:03",
         "last_updated": "2025-10-18T15:14:59"
     },
@@ -27,23 +43,38 @@
         "id": "squats",
         "title": "Squats",
         "description": "squatting",
-        "tags": ["legs", "compound"],
-        "has_weight": true,
-        "default_weight_kg": 50.0,
-        "goal_weight_kg": 70.0,
-        "has_reps": true,
-        "default_reps": 10,
-        "goal_reps": 12,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 4,
-        "has_time": false,
-        "default_time": 0,
-        "goal_time": 0,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "kg",
+        "tags": [
+            "legs",
+            "compound"
+        ],
+        "weight": {
+            "has": true,
+            "default": 50.0,
+            "goal": 70.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-18T15:10:08",
         "last_updated": "2025-10-18T15:10:19"
     },
@@ -51,23 +82,40 @@
         "id": "bench_press",
         "title": "Bench Press",
         "description": "Classic chest exercise for upper body strength.",
-        "tags": ["chest", "compound", "upper-body", "strength"],
-        "has_weight": true,
-        "default_weight_kg": 40.0,
-        "goal_weight_kg": 60.0,
-        "has_reps": true,
-        "default_reps": 8,
-        "goal_reps": 10,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 4,
-        "has_time": false,
-        "default_time": 0,
-        "goal_time": 0,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "kg",
+        "tags": [
+            "chest",
+            "compound",
+            "upper-body",
+            "strength"
+        ],
+        "weight": {
+            "has": true,
+            "default": 40.0,
+            "goal": 60.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8,
+            "goal": 10
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-19T09:10:00",
         "last_updated": "2025-10-19T09:10:00"
     },
@@ -75,23 +123,40 @@
         "id": "pull_ups",
         "title": "Pull-Ups",
         "description": "Bodyweight exercise for back and biceps.",
-        "tags": ["upper-body", "bodyweight", "back", "biceps"],
-        "has_weight": false,
-        "default_weight_kg": 0.0,
-        "goal_weight_kg": 0.0,
-        "has_reps": true,
-        "default_reps": 8,
-        "goal_reps": 12,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 4,
-        "has_time": false,
-        "default_time": 0,
-        "goal_time": 0,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "bodyweight",
+        "tags": [
+            "upper-body",
+            "bodyweight",
+            "back",
+            "biceps"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "bodyweight"
+        },
+        "reps": {
+            "has": true,
+            "default": 8,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-19T09:11:00",
         "last_updated": "2025-10-19T09:11:00"
     },
@@ -99,23 +164,39 @@
         "id": "plank",
         "title": "Plank",
         "description": "Core stability exercise for endurance and posture.",
-        "tags": ["core", "stability", "bodyweight"],
-        "has_weight": false,
-        "default_weight_kg": 0.0,
-        "goal_weight_kg": 0.0,
-        "has_reps": false,
-        "default_reps": 0,
-        "goal_reps": 0,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 3,
-        "has_time": true,
-        "default_time": 60,
-        "goal_time": 90,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "seconds",
+        "tags": [
+            "core",
+            "stability",
+            "bodyweight"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "bodyweight"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 3
+        },
+        "time": {
+            "has": true,
+            "default": 60,
+            "goal": 90,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-19T09:12:00",
         "last_updated": "2025-10-19T09:12:00"
     },
@@ -123,23 +204,39 @@
         "id": "running",
         "title": "Running",
         "description": "Cardio exercise to improve endurance and heart health.",
-        "tags": ["cardio", "endurance", "legs"],
-        "has_weight": false,
-        "default_weight_kg": 0.0,
-        "goal_weight_kg": 0.0,
-        "has_reps": false,
-        "default_reps": 0,
-        "goal_reps": 0,
-        "has_sets": false,
-        "default_sets": 0,
-        "goal_sets": 0,
-        "has_time": true,
-        "default_time": 30,
-        "goal_time": 45,
-        "has_distance": true,
-        "default_distance": 5,
-        "goal_distance": 8,
-        "unit": "minutes/km",
+        "tags": [
+            "cardio",
+            "endurance",
+            "legs"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "bodyweight"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "time": {
+            "has": true,
+            "default": 30,
+            "goal": 45,
+            "unit": "min"
+        },
+        "distance": {
+            "has": true,
+            "default": 5,
+            "goal": 8,
+            "unit": "km"
+        },
         "created_at": "2025-10-19T09:13:00",
         "last_updated": "2025-10-19T09:13:00"
     },
@@ -147,23 +244,40 @@
         "id": "shoulder_press",
         "title": "Shoulder Press",
         "description": "Overhead press to build delts and triceps.",
-        "tags": ["shoulders", "upper-body", "compound", "strength"],
-        "has_weight": true,
-        "default_weight_kg": 25.0,
-        "goal_weight_kg": 35.0,
-        "has_reps": true,
-        "default_reps": 10,
-        "goal_reps": 12,
-        "has_sets": true,
-        "default_sets": 3,
-        "goal_sets": 4,
-        "has_time": false,
-        "default_time": 0,
-        "goal_time": 0,
-        "has_distance": false,
-        "default_distance": 0,
-        "goal_distance": 0,
-        "unit": "kg",
+        "tags": [
+            "shoulders",
+            "upper-body",
+            "compound",
+            "strength"
+        ],
+        "weight": {
+            "has": true,
+            "default": 25.0,
+            "goal": 35.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
         "created_at": "2025-10-19T09:14:00",
         "last_updated": "2025-10-19T09:14:00"
     }

@@ -15,20 +15,19 @@ def save_exercises(exercises):
     save_json(EXERCISE_FILE, exercises)
 
 def add_exercise(new_exercise):
-    # Add a new exercise if ID is unique.
     exercises = load_exercises()
     if any(ex["id"] == new_exercise["id"] for ex in exercises):
         raise ValueError(f"Exercise with id '{new_exercise['id']}' already exists.")
     
-    new_exercise["created_at"] = datetime.now().isoformat(timespec="seconds")
-    new_exercise["last_updated"] = new_exercise["created_at"]
-    
+    now = datetime.now().isoformat(timespec="seconds")
+    new_exercise["created_at"] = now
+    new_exercise["last_updated"] = now
+
     exercises.append(new_exercise)
     save_exercises(exercises)
     return new_exercise
 
 def edit_exercise(exercise_id, updates):
-    # Edit existing exercise by ID.
     exercises = load_exercises()
     for ex in exercises:
         if ex["id"] == exercise_id:
@@ -39,7 +38,6 @@ def edit_exercise(exercise_id, updates):
     raise ValueError(f"No exercise found with id '{exercise_id}'")
 
 def remove_exercise(exercise_id):
-    # Delete exercise by ID.
     exercises = load_exercises()
     updated = [ex for ex in exercises if ex["id"] != exercise_id]
     
@@ -50,7 +48,6 @@ def remove_exercise(exercise_id):
     return exercise_id
 
 def list_exercises():
-    # Return all exercises (sorted alphabetically).
     exercises = load_exercises()
     return sorted(exercises, key=lambda x: x["title"].lower())
 
@@ -79,3 +76,45 @@ def search_exercises(query=None, sort_alpha=True):
         filtered.sort(key=lambda x: x.get("title", "").lower())
 
     return filtered
+
+def normalize_exercise_data(data, existing_id=None):
+    """Takes raw input (from UI or API) and builds a properly structured exercise dict."""
+    now = datetime.now().isoformat(timespec="seconds")
+    ex_id = existing_id or data["title"].lower().replace(" ", "_")
+
+    return {
+        "id": ex_id,
+        "title": data["title"],
+        "description": data.get("description", ""),
+        "tags": data.get("tags", []),
+        "weight": {
+            "has": data.get("weight", {}).get("default", 0) > 0,
+            "default": data.get("weight", {}).get("default", 0),
+            "goal": data.get("weight", {}).get("goal", data.get("weight", {}).get("default", 0)),
+            "unit": data.get("weight", {}).get("unit", "kg")
+        },
+        "reps": {
+            "has": data.get("reps", {}).get("default", 0) > 0,
+            "default": data.get("reps", {}).get("default", 0),
+            "goal": data.get("reps", {}).get("goal", data.get("reps", {}).get("default", 0))
+        },
+        "sets": {
+            "has": data.get("sets", {}).get("default", 0) > 0,
+            "default": data.get("sets", {}).get("default", 0),
+            "goal": data.get("sets", {}).get("goal", data.get("sets", {}).get("default", 0))
+        },
+        "time": {
+            "has": data.get("time", {}).get("default", 0) > 0,
+            "default": data.get("time", {}).get("default", 0),
+            "goal": data.get("time", {}).get("goal", data.get("time", {}).get("default", 0)),
+            "unit": data.get("time", {}).get("unit", "sec")
+        },
+        "distance": {
+            "has": data.get("distance", {}).get("default", 0) > 0,
+            "default": data.get("distance", {}).get("default", 0),
+            "goal": data.get("distance", {}).get("goal", data.get("distance", {}).get("default", 0)),
+            "unit": data.get("distance", {}).get("unit", "m")
+        },
+        "created_at": data.get("created_at", now),
+        "last_updated": now
+    }
