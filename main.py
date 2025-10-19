@@ -6,7 +6,7 @@ from tabs.workout_tab import WorkoutTab
 from tabs.logs_tab import LogsTab
 from tabs.settings_tab import SettingsTab
 
-# ---------- MAIN APP ----------
+# ---------- MAIN ----------
 class GymLogApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -14,6 +14,7 @@ class GymLogApp(tk.Tk):
         self.title("Gym Log App")
         self.geometry("400x600")
         self.minsize(500, 500)
+        self.resizable(False, False)
 
         # Style
         style = ttk.Style(self)
@@ -37,9 +38,9 @@ class GymLogApp(tk.Tk):
 
         # Configure tab style to stretch
         self.style = style
-        self.update_tab_widths()  # set initial widths
-        self.tab_control.bind("<Configure>", self.on_resize)  # update widths on resize
-
+        self.update_tab_widths()
+        self.tab_control.bind("<Configure>", self.on_resize)  # update widths on resize 
+        
     def update_tab_widths(self):
         tab_count = len(self.tab_control.tabs())
         if tab_count == 0:
@@ -52,7 +53,6 @@ class GymLogApp(tk.Tk):
         self.update_tab_widths()
 
 
-# ---------- RUN APP ----------
 if __name__ == "__main__":
     app = GymLogApp()
     app.mainloop()

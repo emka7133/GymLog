@@ -34,7 +34,7 @@ def edit_exercise(exercise_id, updates):
             ex.update(updates)
             ex["last_updated"] = datetime.now().isoformat(timespec="seconds")
             save_exercises(exercises)
-            return exercise_id
+            return exercise_id 
     raise ValueError(f"No exercise found with id '{exercise_id}'")
 
 def remove_exercise(exercise_id):
@@ -46,10 +46,6 @@ def remove_exercise(exercise_id):
     
     save_exercises(updated)
     return exercise_id
-
-def list_exercises():
-    exercises = load_exercises()
-    return sorted(exercises, key=lambda x: x["title"].lower())
 
 def get_exercise_by_id(exercise_id):
     exercises = load_exercises()
@@ -77,44 +73,32 @@ def search_exercises(query=None, sort_alpha=True):
 
     return filtered
 
+def build_metric(data, key, default_unit=None):
+    metric = data.get(key, {})
+    val = {
+        "has": metric.get("default", 0) > 0,
+        "default": metric.get("default", 0),
+        "goal": metric.get("goal", metric.get("default", 0)),
+    }
+    if default_unit:
+        val["unit"] = metric.get("unit", default_unit)
+    return val
+
 def normalize_exercise_data(data, existing_id=None):
-    """Takes raw input (from UI or API) and builds a properly structured exercise dict."""
+    """Builds a properly structured exercise dict."""
     now = datetime.now().isoformat(timespec="seconds")
     ex_id = existing_id or data["title"].lower().replace(" ", "_")
 
     return {
-        "id": ex_id,
-        "title": data["title"],
-        "description": data.get("description", ""),
-        "tags": data.get("tags", []),
-        "weight": {
-            "has": data.get("weight", {}).get("default", 0) > 0,
-            "default": data.get("weight", {}).get("default", 0),
-            "goal": data.get("weight", {}).get("goal", data.get("weight", {}).get("default", 0)),
-            "unit": data.get("weight", {}).get("unit", "kg")
-        },
-        "reps": {
-            "has": data.get("reps", {}).get("default", 0) > 0,
-            "default": data.get("reps", {}).get("default", 0),
-            "goal": data.get("reps", {}).get("goal", data.get("reps", {}).get("default", 0))
-        },
-        "sets": {
-            "has": data.get("sets", {}).get("default", 0) > 0,
-            "default": data.get("sets", {}).get("default", 0),
-            "goal": data.get("sets", {}).get("goal", data.get("sets", {}).get("default", 0))
-        },
-        "time": {
-            "has": data.get("time", {}).get("default", 0) > 0,
-            "default": data.get("time", {}).get("default", 0),
-            "goal": data.get("time", {}).get("goal", data.get("time", {}).get("default", 0)),
-            "unit": data.get("time", {}).get("unit", "sec")
-        },
-        "distance": {
-            "has": data.get("distance", {}).get("default", 0) > 0,
-            "default": data.get("distance", {}).get("default", 0),
-            "goal": data.get("distance", {}).get("goal", data.get("distance", {}).get("default", 0)),
-            "unit": data.get("distance", {}).get("unit", "m")
-        },
-        "created_at": data.get("created_at", now),
-        "last_updated": now
+    "id": ex_id,
+    "title": data["title"],
+    "description": data.get("description", ""),
+    "tags": data.get("tags", []) if isinstance(data.get("tags", []), list) else [], # ensures tags is a list object
+    "weight": build_metric(data, "weight", "kg"),
+    "reps": build_metric(data, "reps"),
+    "sets": build_metric(data, "sets"),
+    "time": build_metric(data, "time", "sec"),
+    "distance": build_metric(data, "distance", "m"),
+    "created_at": data.get("created_at", now),
+    "last_updated": now,
     }

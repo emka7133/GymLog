@@ -37,7 +37,7 @@
             "unit": "m"
         },
         "created_at": "2025-10-15T08:39:03",
-        "last_updated": "2025-10-18T15:14:59"
+        "last_updated": "2025-10-19T18:45:33"
     },
     {
         "id": "squats",
@@ -117,7 +117,7 @@
             "unit": "m"
         },
         "created_at": "2025-10-19T09:10:00",
-        "last_updated": "2025-10-19T09:10:00"
+        "last_updated": "2025-10-19T18:48:24"
     },
     {
         "id": "pull_ups",
@@ -133,7 +133,7 @@
             "has": false,
             "default": 0,
             "goal": 0,
-            "unit": "bodyweight"
+            "unit": "kg"
         },
         "reps": {
             "has": true,
@@ -173,7 +173,7 @@
             "has": false,
             "default": 0,
             "goal": 0,
-            "unit": "bodyweight"
+            "unit": "kg"
         },
         "reps": {
             "has": false,
@@ -213,7 +213,7 @@
             "has": false,
             "default": 0,
             "goal": 0,
-            "unit": "bodyweight"
+            "unit": "kg"
         },
         "reps": {
             "has": false,
