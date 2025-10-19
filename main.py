@@ -12,7 +12,7 @@ class GymLogApp(tk.Tk):
         super().__init__()
 
         self.title("Gym Log App")
-        self.geometry("800x600")
+        self.geometry("400x600")
         self.minsize(500, 500)
 
         # Style

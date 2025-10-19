@@ -54,6 +54,62 @@ class ExercisesTab(ttk.Frame):
             self.entry.delete(0, tk.END)
             self.entry.config(foreground="black")
 
+    # ---------- EXERCISE DATA HANDLERS ----------    
+
+    def _get_exercise_data_from_entries(self, entries, existing_id=None):
+        """Extract and validate data from entry fields into an exercise dict."""
+        title = entries["Title"].get().strip()
+        if not title:
+            raise ValueError("Title is required.")
+
+        description = entries["Description"].get().strip()
+        tags = [t.strip() for t in entries["Tags (comma-separated)"].get().split(",") if t.strip()]
+
+        def parse_float(key):
+            try:
+                return float(entries[key].get().strip() or 0)
+            except ValueError:
+                return 0
+
+        def parse_int(key):
+            try:
+                return int(entries[key].get().strip() or 0)
+            except ValueError:
+                return 0
+
+        default_weight = parse_float("Default Weight (kg)")
+        default_reps = parse_int("Default Reps")
+        default_sets = parse_int("Default Sets")
+        default_time = parse_int("Default Time")
+        default_distance = parse_int("Default Distance")
+
+        now = datetime.now().isoformat()
+
+        return {
+            "id": existing_id or title.lower().replace(" ", "_"),
+            "title": title,
+            "description": description,
+            "tags": tags,
+            "has_weight": default_weight > 0,
+            "default_weight_kg": default_weight,
+            "goal_weight_kg": default_weight,
+            "has_reps": default_reps > 0,
+            "default_reps": default_reps,
+            "goal_reps": default_reps,
+            "has_sets": default_sets > 0,
+            "default_sets": default_sets,
+            "goal_sets": default_sets,
+            "has_time": default_time > 0,
+            "default_time": default_time,
+            "goal_time": default_time,
+            "has_distance": default_distance > 0,
+            "default_distance": default_distance,
+            "goal_distance": default_distance,
+            "unit": "kg",
+            "created_at": now,
+            "last_updated": now,
+        }
+
     # ---------- LIVE SEARCH HANDLER ----------
     def on_search_change(self, *args):
         """Triggered automatically whenever search text changes."""
@@ -95,63 +151,39 @@ class ExercisesTab(ttk.Frame):
     def open_add_exercise_window(self):
         popup = tk.Toplevel(self)
         popup.title("Add Exercise")
-        popup.geometry("400x500")
+        popup.geometry("400x800")
         popup.resizable(False, False)
 
         ttk.Label(popup, text="Add New Exercise", font=("Arial", 16)).pack(pady=10)
-        form = ttk.Frame(popup)
-        form.pack(pady=10)
+        frame = ttk.Frame(popup)
+        frame.pack(pady=10)
 
-        labels = ["Title", "Description", "Tags (comma-separated)",
-                  "Default Weight (kg)", "Default Reps", "Default Sets"]
+        labels = [
+            "Title", 
+            "Description", 
+            "Tags (comma-separated)",
+            "Default Weight (kg)", 
+            "Default Reps", 
+            "Default Sets", 
+            "Default Time", 
+            "Default Distance"]
+        
         self.entries = {}
         for label in labels:
-            ttk.Label(form, text=label).pack(anchor="w", padx=10, pady=3)
-            entry = ttk.Entry(form, width=40)
+            ttk.Label(frame, text=label).pack(anchor="w", padx=10, pady=3)
+            entry = ttk.Entry(frame, width=40)
             entry.pack(padx=10)
             self.entries[label] = entry
 
         ttk.Button(popup, text="Save Exercise", command=lambda: save_exercise()).pack(pady=15)
 
         def save_exercise():
-            title = self.entries["Title"].get().strip()
-            if not title:
-                messagebox.showerror("Error", "Title is required.")
-                return
-
-            description = self.entries["Description"].get().strip()
-            tags = [t.strip() for t in self.entries["Tags (comma-separated)"].get().split(",") if t.strip()]
             try:
-                default_weight = float(self.entries["Default Weight (kg)"].get().strip() or 0)
-            except ValueError:
-                default_weight = 0
-            default_reps = int(self.entries["Default Reps"].get().strip() or 0)
-            default_sets = int(self.entries["Default Sets"].get().strip() or 0)
-
-            exercise = {
-                "id": title.lower().replace(" ", "_"),
-                "title": title,
-                "description": description,
-                "tags": tags,
-                "has_weight": default_weight > 0,
-                "default_weight_kg": default_weight,
-                "goal_weight_kg": default_weight,
-                "has_reps": default_reps > 0,
-                "default_reps": default_reps,
-                "goal_reps": default_reps,
-                "has_sets": default_sets > 0,
-                "default_sets": default_sets,
-                "goal_sets": default_sets,
-                "unit": "kg",
-                "created_at": datetime.now().isoformat(),
-                "last_updated": datetime.now().isoformat(),
-            }
-
-            try:
+                exercise = self._get_exercise_data_from_entries(self.entries)
                 add_exercise(exercise)
-                messagebox.showinfo("Success", f"Added new exercise: {title}")
+                messagebox.showinfo("Success", f"Added new exercise: {exercise['title']}")
                 popup.destroy()
-                self.update_exercise_list()  # refresh list immediately
+                self.update_exercise_list()
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to save exercise:\n{e}")
 
@@ -160,7 +192,7 @@ class ExercisesTab(ttk.Frame):
         """Show a popup with full exercise details."""
         popup = tk.Toplevel(self)
         popup.title(ex["title"])
-        popup.geometry("400x500")
+        popup.geometry("400x600")
         popup.resizable(False, False)
 
         ttk.Label(popup, text=ex["title"], font=("Arial", 16, "bold")).pack(pady=10)
@@ -174,6 +206,8 @@ class ExercisesTab(ttk.Frame):
             "Default Weight":   f"{ex.get('default_weight_kg', 0)} kg" if ex.get("has_weight") else "N/A",
             "Default Reps":     str(ex.get("default_reps", 0)) if ex.get("has_reps") else "N/A",
             "Default Sets":     str(ex.get("default_sets", 0)) if ex.get("has_sets") else "N/A",
+            "Default Time":     str(ex.get("default_time", 0)) if ex.get("has_time") else "N/A",
+            "Default Distance": str(ex.get("default_distamce", 0)) if ex.get("has_distance") else "N/A",
             "Created":          ex.get("created_at", "Unknown"),
             "Last Updated":     ex.get("last_updated", "Unknown"),
         }
@@ -182,29 +216,29 @@ class ExercisesTab(ttk.Frame):
             ttk.Label(frame, text=f"{key}:", font=("Arial", 10, "bold")).pack(anchor="w", pady=(5, 0))
             ttk.Label(frame, text=value, wraplength=350).pack(anchor="w", padx=10)
 
-        ttk.Button(popup, text="Edit", command=lambda: self.edit_exercise_popup(ex, popup)).pack(side="left", padx=10)
-        ttk.Button(popup, text="Remove", command=lambda: self.remove_exercise_popup(ex, popup)).pack(side="left", padx=10)
-        ttk.Button(popup, text="Close", command=popup.destroy).pack(side="left", padx=10)
+        ttk.Button(frame, text="Edit", command=lambda: self.edit_exercise_popup(ex, popup)).pack(side="left", padx=10)
+        ttk.Button(frame, text="Remove", command=lambda: self.remove_exercise_popup(ex, popup)).pack(side="left", padx=10)
+        ttk.Button(frame, text="Close", command=popup.destroy).pack(side="left", padx=10)
 
     # ---------- Edit Exercise Popup ----------
     def edit_exercise_popup(self, ex, parent_popup=None):
         """Open a popup to edit an existing exercise."""
         popup = tk.Toplevel(self)
         popup.title(f"Edit Exercise: {ex['title']}")
-        popup.geometry("400x500")
+        popup.geometry("400x600")
         popup.resizable(False, False)
 
         ttk.Label(popup, text=f"Edit {ex['title']}", font=("Arial", 16)).pack(pady=10)
-        form = ttk.Frame(popup)
-        form.pack(pady=10)
+        frame = ttk.Frame(popup)
+        frame.pack(pady=10)
 
         labels = ["Title", "Description", "Tags (comma-separated)",
                   "Default Weight (kg)", "Default Reps", "Default Sets"]
         entries = {}
 
         for label in labels:
-            ttk.Label(form, text=label).pack(anchor="w", padx=10, pady=3)
-            entry = ttk.Entry(form, width=40)
+            ttk.Label(frame, text=label).pack(anchor="w", padx=10, pady=3)
+            entry = ttk.Entry(frame, width=40)
             # pre-fill with existing values
             if label == "Title":
                 entry.insert(0, ex["title"])
@@ -218,57 +252,32 @@ class ExercisesTab(ttk.Frame):
                 entry.insert(0, str(ex.get("default_reps", 0)))
             elif label == "Default Sets":
                 entry.insert(0, str(ex.get("default_sets", 0)))
+            elif label == "Default Time":
+                entry.insert(0, str(ex.get("default_time", 0)))
+            elif label == "Default Distance":
+                entry.insert(0, str(ex.get("default_distance", 0)))
             entry.pack(padx=10)
             entries[label] = entry
 
         def save_changes():
-            title = entries["Title"].get().strip()
-            if not title:
-                messagebox.showerror("Error", "Title is required.")
-                return
-
-            description = entries["Description"].get().strip()
-            tags = [t.strip() for t in entries["Tags (comma-separated)"].get().split(",") if t.strip()]
             try:
-                default_weight = float(entries["Default Weight (kg)"].get().strip() or 0)
-            except ValueError:
-                default_weight = 0
-            default_reps = int(entries["Default Reps"].get().strip() or 0)
-            default_sets = int(entries["Default Sets"].get().strip() or 0)
-
-            updates = {
-                "title": title,
-                "description": description,
-                "tags": tags,
-                "has_weight": default_weight > 0,
-                "default_weight_kg": default_weight,
-                "goal_weight_kg": default_weight,
-                "has_reps": default_reps > 0,
-                "default_reps": default_reps,
-                "goal_reps": default_reps,
-                "has_sets": default_sets > 0,
-                "default_sets": default_sets,
-                "goal_sets": default_sets,
-                "last_updated": datetime.now().isoformat(),
-            }
-
-            try:
-                edit_exercise(ex["id"], updates)
-                messagebox.showinfo("Success", f"Updated exercise: {title}")
+                updated_data = self._get_exercise_data_from_entries(entries, existing_id=ex["id"])
+                edit_exercise(ex["id"], updated_data)
+                messagebox.showinfo("Success", f"Updated exercise: {updated_data['title']}")
                 popup.destroy()
-                if parent_popup: parent_popup.destroy()
+                if parent_popup:
+                    parent_popup.destroy()
                 self.update_exercise_list()
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to edit exercise:\n{e}")
 
-        ttk.Button(popup, text="Save Changes", command=save_changes).pack(pady=10)
-        ttk.Button(popup, text="Cancel", command=popup.destroy).pack(pady=5)
+
+        ttk.Button(frame, text="Save Changes", command=save_changes).pack(pady=10)
+        ttk.Button(frame, text="Cancel", command=popup.destroy).pack(pady=5)
 
     # ---------- Remove Exercise Popup ----------
     def remove_exercise_popup(self, ex, parent_popup=None):
-        """Confirm deletion and remove exercise."""
-        confirm = messagebox.askyesno("Confirm Delete",
-                                      f"Are you sure you want to delete '{ex['title']}'?")
+        confirm = messagebox.askyesno("Confirm Delete", f"Are you sure you want to delete '{ex['title']}'?")
         if confirm:
             try:
                 remove_exercise(ex["id"])
