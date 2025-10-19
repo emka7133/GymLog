@@ -14,58 +14,90 @@ class ExercisesTab(ttk.Frame):
         self.search_var = tk.StringVar()
         self.entry = ttk.Entry(frame, textvariable=self.search_var)
         self.entry.pack(side="left", padx=5, fill="x", expand=True)
+        self.search_var.trace_add("write", self._on_search_change)
 
         # Placeholder text
         self.placeholder_text = "Search"
-        self._add_placeholder()
-        self.entry.bind("<FocusIn>", self._remove_placeholder)
-        self.entry.bind("<FocusOut>", self._add_placeholder)
+        self._setup_placeholder()
 
-        ttk.Button(
-            frame, 
-            text="Add Exercise", 
-            command=self.open_add_exercise_window
-            ).pack(side="left", padx=5)
+        # Add Exercise button
+        ttk.Button(frame, text="Add Exercise", command=self.open_add_exercise_window).pack(side="left", padx=5)
+
+        # Main frame: tags on left, exercises on right
+        main_frame = ttk.Frame(self)
+        main_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        # Tags listbox
+        self.tag_listbox = tk.Listbox(main_frame, height=15, width=20)
+        self.tag_listbox.pack(side="left", fill="both", padx=(0, 10))
+        self.tag_listbox.bind("<<ListboxSelect>>", self._on_tag_selected)
 
         # Exercise list
-        self.exercise_list = tk.Listbox(self, height=15, width=60)
-        self.exercise_list.pack(pady=10, padx=10, fill="both", expand=True)
-
-        self.search_var.trace_add("write", self._on_search_change)
+        self.exercise_list = tk.Listbox(main_frame, height=15, width=60)
+        self.exercise_list.pack(fill="both", padx=(10, 10), expand=True)
         self.exercise_list.bind("<Double-Button-1>", self._on_exercise_double_click)
+
         self.displayed_exercises = []
+        self.tags = self._get_all_tags()
+        self.selected_tag = None
+        self._populate_tag_list()
         self._update_exercise_list()
 
 
-    # ---------- PLACEHOLDER HANDLERS ----------
+    # ---------- PLACEHOLDER HANDLER ----------
+    def _setup_placeholder(self):
+        """Initialize placeholder using trace only (no focus events)."""
+        self._placeholder_active = True
+        self.search_var.set(self.placeholder_text)
+        self.entry.config(foreground="gray")
+        
+        self.entry.bind("<FocusIn>", self._remove_placeholder)
+        self.entry.bind("<FocusOut>", self._add_placeholder)    
+
     def _add_placeholder(self, event=None):
-        if not self.search_var.get().strip():
+        """Add placeholder text on focus out if entry is empty."""
+        if not self.entry.get().strip():
+            self._placeholder_active = True
+            self.entry.delete(0, tk.END)
             self.entry.insert(0, self.placeholder_text)
             self.entry.config(foreground="gray")
 
     def _remove_placeholder(self, event=None):
-        if self.entry.get() == self.placeholder_text:
+        """Remove placeholder text on focus in."""
+        if self._placeholder_active:
+            self._placeholder_active = False
             self.entry.delete(0, tk.END)
             self.entry.config(foreground="black")
-
+   
     # ---------- LIVE SEARCH HANDLER ----------
     def _on_search_change(self, *args):
-        self._update_exercise_list()
+        """Trigger search only when user is typing actual query."""
+        if not self._placeholder_active:
+            self._update_exercise_list()
 
+    # ---------- UPDATE EXERCISES ----------
     def _update_exercise_list(self):
-        query = self.search_var.get().strip()
-        self.exercise_list.delete(0, tk.END)
-        if not query or query == self.placeholder_text:
+        """Populate exercise list, filtered by search query and selected tag."""
+        query = self.search_var.get().strip()  # ignore _placeholder_active for filtering
+        if query == self.placeholder_text:
             query = ""
 
+        self.exercise_list.delete(0, tk.END)
+
         results = search_exercises(query)
+
+        # Apply tag filter if one is selected
+        if self.selected_tag:
+            results = [ex for ex in results if self.selected_tag in ex.get("tags", [])]
+
         self.displayed_exercises = results
 
         if not results:
-            self.exercise_list.insert(tk.END, f"No exercises found for: {query}")
+            display_text = f"No exercises found for: {query}" if query else "No exercises found."
+            self.exercise_list.insert(tk.END, display_text)
         else:
             for ex in results:
-                self.exercise_list.insert(tk.END, f"{ex['title']}")
+                self.exercise_list.insert(tk.END, ex["title"])
 
     # ---------- DOUBLE-CLICK HANDLER ----------
     def _on_exercise_double_click(self, event):
@@ -78,8 +110,33 @@ class ExercisesTab(ttk.Frame):
         ex = self.displayed_exercises[index]
         self.open_exercise_details(ex)
 
+    # ---------- TAG HANDLERS ----------
+    def _get_all_tags(self):
+        """Return a sorted list of all unique tags from exercises."""
+        exercises = search_exercises(None)
+        tags = set()
+        for ex in exercises:
+            tags.update(ex.get("tags", []))
+        return sorted(tags)
+
+    def _populate_tag_list(self):
+        """Fill the tag listbox with available tags."""
+        self.tag_listbox.delete(0, tk.END)
+        for tag in self.tags:
+            self.tag_listbox.insert(tk.END, tag)
+
+    def _on_tag_selected(self, event):
+        """Filter exercises by selected tag."""
+        selection = self.tag_listbox.curselection()
+        if not selection:
+            self.selected_tag = None
+        else:
+            self.selected_tag = self.tag_listbox.get(selection[0])
+        self._update_exercise_list()
+
     # ---------- EXERCISE DATA HANDLER ----------
     def _get_exercise_data_from_entries(self, entries):
+        """Extract exercise data from entry widgets."""
         title = entries["Title"].get().strip()
         if not title:
             raise ValueError("Title is required.")
@@ -89,13 +146,13 @@ class ExercisesTab(ttk.Frame):
         def parse_float(key):
             try:
                 return float(entries[key].get().strip() or 0)
-            except ValueError:
+            except (ValueError, KeyError):
                 return 0.0
 
         def parse_int(key):
             try:
                 return int(entries[key].get().strip() or 0)
-            except ValueError:
+            except (ValueError, KeyError):
                 return 0
 
         return {
@@ -103,27 +160,32 @@ class ExercisesTab(ttk.Frame):
             "description": description,
             "tags": tags,
             "weight": {
+                "has": parse_float("Default Weight") > 0,
                 "default": parse_float("Default Weight"),
-                "goal": parse_float("Default Weight"),
-                "unit": self.unit_weight.get()
+                "goal": parse_float("Goal Weight"),
+                "unit": getattr(self, "unit_weight", tk.StringVar(value="kg")).get()
             },
             "reps": {
+                "has": parse_int("Default Reps") > 0,
                 "default": parse_int("Default Reps"),
-                "goal": parse_int("Default Reps")
+                "goal": parse_int("Goal Reps")
             },
             "sets": {
+                "has": parse_int("Default Sets") > 0,
                 "default": parse_int("Default Sets"),
-                "goal": parse_int("Default Sets")
+                "goal": parse_int("Goal Sets")
             },
             "time": {
+                "has": parse_int("Default Time") > 0,
                 "default": parse_int("Default Time"),
-                "goal": parse_int("Default Time"),
-                "unit": self.unit_time.get()
+                "goal": parse_int("Goal Time"),
+                "unit": getattr(self, "unit_time", tk.StringVar(value="sec")).get()
             },
             "distance": {
+                "has": parse_int("Default Distance") > 0,
                 "default": parse_int("Default Distance"),
-                "goal": parse_int("Default Distance"),
-                "unit": self.unit_distance.get()
+                "goal": parse_int("Goal Distance"),
+                "unit": getattr(self, "unit_distance", tk.StringVar(value="m")).get()
             }
         }
 
@@ -212,59 +274,7 @@ class ExercisesTab(ttk.Frame):
         # ---------- SAVE FUNCTION ----------
         def save_exercise():
             try:
-                title = self.entries["Title"].get().strip()
-                if not title:
-                    raise ValueError("Title is required.")
-                description = self.entries["Description"].get().strip()
-                tags = [t.strip() for t in self.entries["Tags (comma-separated)"].get().split(",") if t.strip()]
-
-                def parse_float(key):
-                    try:
-                        return float(self.entries.get(key, tk.Entry()).get().strip() or 0)
-                    except ValueError:
-                        return 0.0
-
-                def parse_int(key):
-                    try:
-                        return int(self.entries.get(key, tk.Entry()).get().strip() or 0)
-                    except ValueError:
-                        return 0
-
-                exercise = {
-                    "title": title,
-                    "description": description,
-                    "tags": tags,
-                    "weight": {
-                        "has": parse_float("weight_Default") > 0,
-                        "default": parse_float("weight_Default"),
-                        "goal": parse_float("weight_Goal"),
-                        "unit": self.entries.get("weight_unit", tk.Entry()).get() if "weight_unit" in self.entries else "kg"
-                    },
-                    "reps": {
-                        "has": parse_int("reps_Default") > 0,
-                        "default": parse_int("reps_Default"),
-                        "goal": parse_int("reps_Goal")
-                    },
-                    "sets": {
-                        "has": parse_int("sets_Default") > 0,
-                        "default": parse_int("sets_Default"),
-                        "goal": parse_int("sets_Goal")
-                    },
-                    "time": {
-                        "has": parse_int("time_Default") > 0,
-                        "default": parse_int("time_Default"),
-                        "goal": parse_int("time_Goal"),
-                        "unit": self.entries.get("time_unit", tk.Entry()).get() if "time_unit" in self.entries else "sec"
-                    },
-                    "distance": {
-                        "has": parse_int("distance_Default") > 0,
-                        "default": parse_int("distance_Default"),
-                        "goal": parse_int("distance_Goal"),
-                        "unit": self.entries.get("distance_unit", tk.Entry()).get() if "distance_unit" in self.entries else "m"
-                    }
-                }
-
-                # Normalize, add, update list
+                exercise = self._get_exercise_data_from_entries(self.entries)
                 normalized = normalize_exercise_data(exercise)
                 add_exercise(normalized)
                 messagebox.showinfo("Success", f"Added new exercise: {exercise['title']}")
@@ -391,82 +401,19 @@ class ExercisesTab(ttk.Frame):
 
     # ---------- SAVE EDITED EXERCISE CONFIRM ----------
     def save_edit(self, ex, popup=None, parent_popup=None):
-        confirm = messagebox.askyesno(
-            "Confirm Edit",
-            f"Are you sure you want to save changes to '{ex['title']}'?"
-        )
-        if not confirm:
-            return
-
-        try:
-            # --- Gather data from fields ---
-            title = self.entries["Title"].get().strip()
-            if not title:
-                raise ValueError("Title is required.")
-            description = self.entries["Description"].get().strip()
-            tags = [t.strip() for t in self.entries["Tags (comma-separated)"].get().split(",") if t.strip()]
-
-            # Helper to find matching widgets dynamically (so we can reuse the collapsible UI)
-            def find_value_for_field(section, label_contains):
-                """Finds entry or combobox in a section frame by matching label text."""
-                for child in self.section_vars:
-                    pass  # placeholder
-
-            # --- Build updated data dict ---
-            # We’ll iterate over all sections that are toggled ON
-            data = {
-                "title": title,
-                "description": description,
-                "tags": tags,
-            }
-
-            for section_name, var in self.section_vars.items():
-                if not var.get():
-                    continue  # skip collapsed sections
-
-                section_frame = None
-                # find frame associated with this section
-                for child in popup.winfo_children():
-                    for grandchild in child.winfo_children():
-                        if isinstance(grandchild, ttk.Frame):
-                            # crude check if it belongs to this section
-                            for lbl in grandchild.winfo_children():
-                                if isinstance(lbl, ttk.Label) and lbl.cget("text").lower().startswith(section_name):
-                                    section_frame = grandchild
-                                    break
-                    if section_frame:
-                        break
-
-                if not section_frame:
-                    continue
-
-                # extract values
-                entries = [w for w in section_frame.winfo_children() if isinstance(w, ttk.Entry)]
-                combo_boxes = [w for w in section_frame.winfo_children() if isinstance(w, ttk.Combobox)]
-
-                default_val = float(entries[0].get() or 0) if entries else 0
-                goal_val = float(entries[1].get() or 0) if len(entries) > 1 else default_val
-                unit = combo_boxes[0].get() if combo_boxes else None
-
-                metric = {"default": default_val, "goal": goal_val}
-                if unit:
-                    metric["unit"] = unit
-                data[section_name] = metric
-
-            # --- Normalize and Save ---
-            normalized = normalize_exercise_data(data, existing_id=ex["id"])
-            edit_exercise(ex["id"], normalized)
-
-            messagebox.showinfo("Success", f"Exercise '{title}' updated successfully.")
-            self._update_exercise_list()
-            if popup:
-                popup.destroy()
-            if parent_popup:
-                parent_popup.destroy()
-
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to save changes:\n{e}")
-
+        confirm = messagebox.askyesno("Confirm Edit", f"Are you certain of your changes to ̈́'{ex['title']}'?")
+        if confirm:
+            try:
+                updates = self._get_exercise_data_from_entries(self.entries)
+                normalized = normalize_exercise_data(updates, existing_id=ex["id"])
+                edit_exercise(ex["id"], normalized)
+                messagebox.showinfo("Changed", f"Exercise '{ex['title']} has been changed.")
+                self._update_exercise_list()
+                if popup: popup.destroy()
+                if parent_popup: parent_popup.destroy()
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to change exercise:\n{e}")
+        return
 
     # ---------- REMOVE EXERCISE CONFIRM ----------
     def remove_exercise_popup(self, ex, parent=None, parent_popup=None):
