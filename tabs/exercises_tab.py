@@ -29,12 +29,12 @@ class ExercisesTab(ttk.Frame):
 
         # Tags listbox
         self.tag_listbox = tk.Listbox(main_frame, height=15, width=20)
-        self.tag_listbox.pack(side="left", fill="both", padx=(0, 10))
+        self.tag_listbox.pack(side="left", fill="both", padx=(0, 10), expand=True)
         self.tag_listbox.bind("<<ListboxSelect>>", self._on_tag_selected)
 
         # Exercise list
         self.exercise_list = tk.Listbox(main_frame, height=15, width=60)
-        self.exercise_list.pack(fill="both", padx=(10, 10), expand=True)
+        self.exercise_list.pack(side="left", fill="both", padx=(10, 10), expand=True)
         self.exercise_list.bind("<Double-Button-1>", self._on_exercise_double_click)
 
         self.displayed_exercises = []
@@ -69,11 +69,13 @@ class ExercisesTab(ttk.Frame):
             self.entry.delete(0, tk.END)
             self.entry.config(foreground="black")
    
+
     # ---------- LIVE SEARCH HANDLER ----------
     def _on_search_change(self, *args):
         """Trigger search only when user is typing actual query."""
         if not self._placeholder_active:
             self._update_exercise_list()
+
 
     # ---------- UPDATE EXERCISES ----------
     def _update_exercise_list(self):
@@ -99,6 +101,7 @@ class ExercisesTab(ttk.Frame):
             for ex in results:
                 self.exercise_list.insert(tk.END, ex["title"])
 
+
     # ---------- DOUBLE-CLICK HANDLER ----------
     def _on_exercise_double_click(self, event):
         selection = self.exercise_list.curselection()
@@ -109,6 +112,7 @@ class ExercisesTab(ttk.Frame):
             return
         ex = self.displayed_exercises[index]
         self.open_exercise_details(ex)
+
 
     # ---------- TAG HANDLERS ----------
     def _get_all_tags(self):
@@ -133,6 +137,7 @@ class ExercisesTab(ttk.Frame):
         else:
             self.selected_tag = self.tag_listbox.get(selection[0])
         self._update_exercise_list()
+
 
     # ---------- EXERCISE DATA HANDLER ----------
     def _get_exercise_data_from_entries(self, entries):
@@ -188,6 +193,8 @@ class ExercisesTab(ttk.Frame):
                 "unit": getattr(self, "unit_distance", tk.StringVar(value="m")).get()
             }
         }
+
+
 
 
     # ---------- CREATE COLLAPSIBLE ----------
@@ -246,6 +253,8 @@ class ExercisesTab(ttk.Frame):
                 combo.grid(row=1, column=len(fields), padx=5, pady=2)
 
         return section_vars
+
+
 
 
     # ---------- ADD EXERCISE POPUP ----------
@@ -397,6 +406,8 @@ class ExercisesTab(ttk.Frame):
 
         ttk.Button(button_frame,text="Save Changes",command=lambda: self.save_edit(ex, popup, parent_popup)).pack(side="left", padx=10)
         ttk.Button(button_frame, text="Cancel", command=popup.destroy).pack(side="left", padx=10)
+
+
 
 
     # ---------- SAVE EDITED EXERCISE CONFIRM ----------
