@@ -7,12 +7,12 @@ Exercise Bank TODO:
 
 
 Workout
-    - time
-    - weights / reps / sets (from last session (default at the first session))
-    - exercises (list)
-	- start / end workout
-    - choose exercise -> do exercise -> assign weight / reps -> finish exercise
-    - rests (None, 30s, 60s, Custom, Unlimited)
+- time
+- weights / reps / sets (from last session (default at the first session))
+- exercises (list)
+- start / end workout
+- choose exercise -> do exercise -> assign weight / reps -> finish exercise
+- rests (None, 30s, 60s, Custom, Unlimited)
 
 
 Logs
@@ -29,5 +29,6 @@ Logs
 - over time progress (graphs)
 	- sort by exercise
 	- determine range (week / month / from start)
+
 
 Settings
