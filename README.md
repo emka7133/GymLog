@@ -3,7 +3,7 @@ Exercise Bank TODO:
 2.  add so tag is deselected if selected tag is clicked.
 3.  fix create_collapsible_section for open_add_exercise_window (currently not aligned and not in view) -> either make it adaptable to window size, or individualize manually for each use instead of a generalized function (in other words, remove the create_collapsible_section function).
 4.  add scrollbar for tag list
-5.  
+5.  fix default units shown in edit window (currently all are set to 'km').
 
 
 Workout
