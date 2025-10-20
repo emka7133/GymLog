@@ -10,6 +10,9 @@ class ExercisesTab(ttk.Frame):
         frame = ttk.Frame(self)
         frame.pack(pady=10)
 
+        # Tag clear button
+        ttk.Button(frame, text="Clear", command=self._clear_search).pack(side="left", padx=5)
+
         # Entry field with live search
         self.search_var = tk.StringVar()
         self.entry = ttk.Entry(frame, textvariable=self.search_var)
@@ -31,6 +34,7 @@ class ExercisesTab(ttk.Frame):
         self.tag_listbox = tk.Listbox(main_frame, height=15, width=20)
         self.tag_listbox.pack(side="left", fill="both", padx=(0, 10), expand=True)
         self.tag_listbox.bind("<<ListboxSelect>>", self._on_tag_selected)
+        self.tag_listbox.bind("<<")
 
         # Exercise list
         self.exercise_list = tk.Listbox(main_frame, height=15, width=60)
@@ -76,19 +80,25 @@ class ExercisesTab(ttk.Frame):
         if not self._placeholder_active:
             self._update_exercise_list()
 
+    def _clear_search(self, *args):
+        self._setup_placeholder()
+        self.selected_tag = None
+        self._update_exercise_list()
+
 
     # ---------- UPDATE EXERCISES ----------
     def _update_exercise_list(self):
         """Populate exercise list, filtered by search query and selected tag."""
         query = self.search_var.get().strip()  # ignore _placeholder_active for filtering
         if query == self.placeholder_text:
-            query = ""
+            query = None
 
         self.exercise_list.delete(0, tk.END)
 
+        # Apply search 
         results = search_exercises(query)
 
-        # Apply tag filter if one is selected
+        # Apply tag filter instead if one is selected
         if self.selected_tag:
             results = [ex for ex in results if self.selected_tag in ex.get("tags", [])]
 
@@ -132,10 +142,8 @@ class ExercisesTab(ttk.Frame):
     def _on_tag_selected(self, event):
         """Filter exercises by selected tag."""
         selection = self.tag_listbox.curselection()
-        if not selection:
-            self.selected_tag = None
-        else:
-            self.selected_tag = self.tag_listbox.get(selection[0])
+        if selection:
+            self.selected_tag = self.tag_listbox.get(selection[0])        
         self._update_exercise_list()
 
 
