@@ -4,7 +4,7 @@ from tkinter import ttk
 from tabs.exercises_tab import ExercisesTab
 from tabs.workout_tab import WorkoutTab
 from tabs.logs_tab import LogsTab
-from tabs.settings_tab import SettingsTab
+from tabs.settings_tab import SettingsTab   
 
 # ---------- MAIN ----------
 class GymLogApp(tk.Tk):

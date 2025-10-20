@@ -1,9 +1,8 @@
 Exercise Bank TODO:
-1.  _update_exercise_list to not reset if a tag is selected.
-2.  add so tag is deselected if selected tag is clicked.
+2.  add so tag is deselected if selected tag is clicked (UPDATE: temp solution, add a clear button to clear filtering)
 3.  fix create_collapsible_section for open_add_exercise_window (currently not aligned and not in view) -> either make it adaptable to window size, or individualize manually for each use instead of a generalized function (in other words, remove the create_collapsible_section function).
 4.  add scrollbar for tag list
-5.  fix default units shown in edit window (currently all are set to 'km').
+5.  (Possibly fixed? New probelm - collapsible not generating new Entry fields, except for "Distance" in edit mode)fix default units shown in edit window (currently all are set to 'km').
 
 
 Workout

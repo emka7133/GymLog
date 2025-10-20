@@ -90,34 +90,34 @@
         ],
         "weight": {
             "has": true,
-            "default": 40.0,
+            "default": 50.0,
             "goal": 60.0,
             "unit": "kg"
         },
         "reps": {
             "has": true,
-            "default": 8,
-            "goal": 10
+            "default": 8.0,
+            "goal": 10.0
         },
         "sets": {
             "has": true,
-            "default": 3,
-            "goal": 4
+            "default": 3.0,
+            "goal": 4.0
         },
         "time": {
             "has": false,
-            "default": 0,
-            "goal": 0,
+            "default": 0.0,
+            "goal": 0.0,
             "unit": "sec"
         },
         "distance": {
             "has": false,
-            "default": 0,
-            "goal": 0,
+            "default": 0.0,
+            "goal": 0.0,
             "unit": "m"
         },
-        "created_at": "2025-10-19T09:10:00",
-        "last_updated": "2025-10-19T18:48:24"
+        "created_at": "2025-10-20T12:13:19",
+        "last_updated": "2025-10-20T12:13:19"
     },
     {
         "id": "pull_ups",
@@ -280,5 +280,535 @@
         },
         "created_at": "2025-10-19T09:14:00",
         "last_updated": "2025-10-19T09:14:00"
+    },
+    {
+        "id": "barbell_row",
+        "title": "Barbell Row",
+        "description": "Compound lift targeting back, lats, and rear delts.",
+        "tags": [
+            "back",
+            "compound",
+            "strength"
+        ],
+        "weight": {
+            "has": true,
+            "default": 20.0,
+            "goal": 60.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8.0,
+            "goal": 10.0
+        },
+        "sets": {
+            "has": true,
+            "default": 3.0,
+            "goal": 4.0
+        },
+        "time": {
+            "has": false,
+            "default": 0.0,
+            "goal": 0.0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0.0,
+            "goal": 0.0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T12:32:35",
+        "last_updated": "2025-10-20T12:32:35"
+    },
+    {
+        "id": "bicep_curl",
+        "title": "Bicep Curl",
+        "description": "Isolation exercise for building arm strength and size.",
+        "tags": [
+            "arms",
+            "biceps",
+            "isolation"
+        ],
+        "weight": {
+            "has": true,
+            "default": 10.0,
+            "goal": 15.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 12,
+            "goal": 15
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:31:00",
+        "last_updated": "2025-10-20T09:31:00"
+    },
+    {
+        "id": "lunges",
+        "title": "Lunges",
+        "description": "Leg exercise for balance, strength, and stability.",
+        "tags": [
+            "legs",
+            "balance",
+            "bodyweight"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:32:00",
+        "last_updated": "2025-10-20T09:32:00"
+    },
+    {
+        "id": "tricep_dips",
+        "title": "Tricep Dips",
+        "description": "Bodyweight exercise targeting triceps and chest.",
+        "tags": [
+            "arms",
+            "triceps",
+            "bodyweight"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 15
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:33:00",
+        "last_updated": "2025-10-20T09:33:00"
+    },
+    {
+        "id": "lat_pulldown",
+        "title": "Lat Pulldown",
+        "description": "Machine exercise to strengthen lats and improve pull-up performance.",
+        "tags": [
+            "back",
+            "machine",
+            "upper-body"
+        ],
+        "weight": {
+            "has": true,
+            "default": 40.0,
+            "goal": 55.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:34:00",
+        "last_updated": "2025-10-20T09:34:00"
+    },
+    {
+        "id": "leg_press",
+        "title": "Leg Press",
+        "description": "Machine-based compound movement for quads and glutes.",
+        "tags": [
+            "legs",
+            "compound",
+            "machine"
+        ],
+        "weight": {
+            "has": true,
+            "default": 100.0,
+            "goal": 140.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:35:00",
+        "last_updated": "2025-10-20T09:35:00"
+    },
+    {
+        "id": "cycling",
+        "title": "Cycling",
+        "description": "Low-impact cardio exercise improving endurance and leg power.",
+        "tags": [
+            "cardio",
+            "endurance",
+            "legs"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "time": {
+            "has": true,
+            "default": 45,
+            "goal": 60,
+            "unit": "min"
+        },
+        "distance": {
+            "has": true,
+            "default": 10,
+            "goal": 15,
+            "unit": "km"
+        },
+        "created_at": "2025-10-20T09:36:00",
+        "last_updated": "2025-10-20T09:36:00"
+    },
+    {
+        "id": "mountain_climbers",
+        "title": "Mountain Climbers",
+        "description": "Dynamic bodyweight exercise improving endurance and agility.",
+        "tags": [
+            "cardio",
+            "core",
+            "bodyweight"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 20,
+            "goal": 30
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": true,
+            "default": 30,
+            "goal": 60,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:37:00",
+        "last_updated": "2025-10-20T09:37:00"
+    },
+    {
+        "id": "jump_rope",
+        "title": "Jump Rope",
+        "description": "Cardio and coordination exercise improving footwork and endurance.",
+        "tags": [
+            "cardio",
+            "coordination",
+            "legs"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 3
+        },
+        "time": {
+            "has": true,
+            "default": 60,
+            "goal": 120,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:38:00",
+        "last_updated": "2025-10-20T09:38:00"
+    },
+    {
+        "id": "calf_raises",
+        "title": "Calf Raises",
+        "description": "Exercise to strengthen and tone calf muscles.",
+        "tags": [
+            "legs",
+            "calves",
+            "isolation"
+        ],
+        "weight": {
+            "has": true,
+            "default": 20.0,
+            "goal": 30.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 15,
+            "goal": 20
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T09:39:00",
+        "last_updated": "2025-10-20T09:39:00"
+    },
+    {
+        "id": "bulgarian_split_squat",
+        "title": "Bulgarian Split Squat",
+        "description": "Single-leg exercise improving balance, leg strength, and hip mobility.",
+        "tags": ["legs", "balance", "bodyweight", "unilateral"],
+        "weight": {"has": true, "default": 20.0, "goal": 30.0, "unit": "kg"},
+        "reps": {"has": true, "default": 10, "goal": 12},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:40:00",
+        "last_updated": "2025-10-20T09:40:00"
+    },
+    {
+        "id": "chin_ups",
+        "title": "Chin-Ups",
+        "description": "Vertical pulling movement focusing on biceps and upper back.",
+        "tags": ["upper-body", "biceps", "bodyweight", "back"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": true, "default": 6, "goal": 10},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:41:00",
+        "last_updated": "2025-10-20T09:41:00"
+    },
+    {
+        "id": "hip_thrust",
+        "title": "Hip Thrust",
+        "description": "Glute-focused strength exercise using bodyweight or barbell resistance.",
+        "tags": ["glutes", "legs", "strength", "compound"],
+        "weight": {"has": true, "default": 40.0, "goal": 60.0, "unit": "kg"},
+        "reps": {"has": true, "default": 10, "goal": 12},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:42:00",
+        "last_updated": "2025-10-20T09:42:00"
+    },
+    {
+        "id": "farmers_carry",
+        "title": "Farmer's Carry",
+        "description": "Grip, core, and shoulder stability exercise using loaded carries.",
+        "tags": ["grip", "core", "strength", "functional"],
+        "weight": {"has": true, "default": 40.0, "goal": 60.0, "unit": "kg"},
+        "reps": {"has": false, "default": 0, "goal": 0},
+        "sets": {"has": true, "default": 3, "goal": 3},
+        "time": {"has": true, "default": 30, "goal": 60, "unit": "sec"},
+        "distance": {"has": true, "default": 20, "goal": 40, "unit": "m"},
+        "created_at": "2025-10-20T09:43:00",
+        "last_updated": "2025-10-20T09:43:00"
+    },
+    {
+        "id": "romanian_deadlift",
+        "title": "Romanian Deadlift",
+        "description": "Hamstring and glute exercise emphasizing hip hinge mechanics.",
+        "tags": ["legs", "hamstrings", "glutes", "strength"],
+        "weight": {"has": true, "default": 50.0, "goal": 70.0, "unit": "kg"},
+        "reps": {"has": true, "default": 8, "goal": 10},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:44:00",
+        "last_updated": "2025-10-20T09:44:00"
+    },
+    {
+        "id": "push_ups",
+        "title": "Push-Ups",
+        "description": "Bodyweight press-up targeting chest, shoulders, and triceps.",
+        "tags": ["chest", "bodyweight", "upper-body"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": true, "default": 12, "goal": 20},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:45:00",
+        "last_updated": "2025-10-20T09:45:00"
+    },
+    {
+        "id": "side_plank",
+        "title": "Side Plank",
+        "description": "Core exercise strengthening obliques and stabilizers.",
+        "tags": ["core", "stability", "bodyweight"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": false, "default": 0, "goal": 0},
+        "sets": {"has": true, "default": 3, "goal": 3},
+        "time": {"has": true, "default": 45, "goal": 60, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:46:00",
+        "last_updated": "2025-10-20T09:46:00"
+    },
+    {
+        "id": "box_jump",
+        "title": "Box Jump",
+        "description": "Plyometric exercise improving explosive power and coordination.",
+        "tags": ["legs", "plyometric", "power", "cardio"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": true, "default": 8, "goal": 12},
+        "sets": {"has": true, "default": 3, "goal": 4},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": true, "default": 0.5, "goal": 0.7, "unit": "m"},
+        "created_at": "2025-10-20T09:47:00",
+        "last_updated": "2025-10-20T09:47:00"
+    },
+    {
+        "id": "rowing_machine",
+        "title": "Rowing Machine",
+        "description": "Full-body cardio exercise emphasizing back and endurance.",
+        "tags": ["cardio", "back", "endurance", "machine"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": false, "default": 0, "goal": 0},
+        "sets": {"has": false, "default": 0, "goal": 0},
+        "time": {"has": true, "default": 15, "goal": 20, "unit": "min"},
+        "distance": {"has": true, "default": 2000, "goal": 3000, "unit": "m"},
+        "created_at": "2025-10-20T09:48:00",
+        "last_updated": "2025-10-20T09:48:00"
+    },
+    {
+        "id": "bird_dog",
+        "title": "Bird Dog",
+        "description": "Core and balance exercise for spinal stability and coordination.",
+        "tags": ["core", "balance", "mobility", "bodyweight"],
+        "weight": {"has": false, "default": 0, "goal": 0, "unit": "kg"},
+        "reps": {"has": true, "default": 10, "goal": 15},
+        "sets": {"has": true, "default": 3, "goal": 3},
+        "time": {"has": false, "default": 0, "goal": 0, "unit": "sec"},
+        "distance": {"has": false, "default": 0, "goal": 0, "unit": "m"},
+        "created_at": "2025-10-20T09:49:00",
+        "last_updated": "2025-10-20T09:49:00"
     }
 ]
