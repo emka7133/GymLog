@@ -1,0 +1,33 @@
+Functions for the workout tab:
+
+# --------- choose exercise ---------
+
+- choose exercise from a list
+- choose several exercises from a list, that will bundled together into a workout
+    - pop-up window / a scrolling list that literally just copies the exercise bank
+
+
+# --------- start workout ---------
+ 
+- start timer, shown at the top
+- create a list of planned exercises on the left
+    - when clicked, highlight and show exercise window on the right (otherwise empty)
+    - exercises can be completed in any order
+- show selected exercise
+    - show #sets of rows with weight / reps from previous session as headline
+    - edit window under each set where you put in the weight and reps for each set as you go
+    - add set button (adds another empty set if you want to do more than the default)
+- rest timer button at the bottom of the page
+
+
+# --------- stop workout ---------
+
+- stop workout button at the top of the page, next to workout time
+- automatically stop workout when last edit window is filled in
+- show summary
+    - workout length
+    - table with exercises
+    - (PRs)?
+    - button to statistics tab
+
+
