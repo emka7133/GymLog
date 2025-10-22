@@ -1,6 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 from utils.json_handler import load_json, save_json
+from utils.helpers import add, edit, remove
 
 EXERCISE_FILE = Path("data/exercises.json")
 
@@ -14,47 +15,24 @@ def load_exercises():
 def save_exercises(exercises):
     save_json(EXERCISE_FILE, exercises)
 
-
 def add_exercise(new_exercise):
     exercises = load_exercises()
-    if any(ex["id"] == new_exercise["id"] for ex in exercises):
-        raise ValueError(f"Exercise with id '{new_exercise['id']}' already exists.")
-    
-    now = datetime.now().isoformat(timespec="seconds")
-    new_exercise["created_at"] = now
-    new_exercise["last_updated"] = now
-
-    exercises.append(new_exercise)
-    save_exercises(exercises)
-    return new_exercise
+    updated, added = add(exercises, new_exercise)
+    save_exercises(updated)
+    return added
 
 def edit_exercise(exercise_id, updates):
     exercises = load_exercises()
-    for ex in exercises:
-        if ex["id"] == exercise_id:
-            ex.update(updates)
-            ex["last_updated"] = datetime.now().isoformat(timespec="seconds")
-            save_exercises(exercises)
-            return exercise_id 
-    raise ValueError(f"No exercise found with id '{exercise_id}'")
-
-def remove_exercise(exercise_id):
-    exercises = load_exercises()
-    updated = [ex for ex in exercises if ex["id"] != exercise_id]
-    
-    if len(updated) == len(exercises):
-        raise ValueError(f"No exercise found with id '{exercise_id}'")
-    
+    updated, _ = edit(exercises, exercise_id, updates)
     save_exercises(updated)
     return exercise_id
 
-
-def get_exercise_by_id(exercise_id):
+def remove_exercise(exercise_id):
     exercises = load_exercises()
-    for ex in exercises:
-        if ex["id"] == exercise_id:
-            return ex
-    return None
+    updated, _ = remove(exercises, exercise_id)
+    save_exercises(updated)
+    return exercise_id
+
 
 def get_all_tags():
     """Return a sorted list of all unique tags from exercises."""
@@ -85,7 +63,7 @@ def search_exercises(query=None, sort_alpha=True):
     return filtered
 
 
-def build_metric(data, key, default_unit=None):
+def exercise_build_metric(data, key, default_unit=None):
     metric = data.get(key, {})
     val = {
         "has": metric.get("default", 0) > 0,
@@ -106,11 +84,11 @@ def normalize_exercise_data(data, existing_id=None):
     "title":        data["title"],
     "description":  data.get("description", ""),
     "tags":         data.get("tags", []) if isinstance(data.get("tags", []), list) else [], # ensures tags is a list object
-    "weight":       build_metric(data, "weight", "kg"),
-    "reps":         build_metric(data, "reps"),
-    "sets":         build_metric(data, "sets"),
-    "time":         build_metric(data, "time", "sec"),
-    "distance":     build_metric(data, "distance", "m"),
+    "weight":       exercise_build_metric(data, "weight", "kg"),
+    "reps":         exercise_build_metric(data, "reps"),
+    "sets":         exercise_build_metric(data, "sets"),
+    "time":         exercise_build_metric(data, "time", "sec"),
+    "distance":     exercise_build_metric(data, "distance", "m"),
     "created_at":   data.get("created_at", now),
     "last_updated": now,
     }
