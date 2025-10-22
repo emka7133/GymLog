@@ -1,15 +1,15 @@
 [
     {
-        "id": "",
-        "description": "",
-        "workouts": {
-            "workout_id1": "",
+        "id": "date_1",
+        "description": "Date",
+        "exercises": {
+            "exercise_id1": "",
             "info": {
                 "weight": 0,
                 "reps": 0,
                 "sets": 0
                 },
-            "workout_id2":{}
+            "exercise_id2":{}
         },
         "created_at": "",
         "last_update": ""
