@@ -1,0 +1,8 @@
+Functions for the statistics tab:
+
+- show list of exercises on the left
+- table with statistics on the right
+    - table shows, for each exercise:
+        - date on the y-axis
+        - weight and reps on the x-axis
+    - expand eventually into a graph
