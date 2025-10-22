@@ -51,7 +51,7 @@ class ExercisesTab(ttk.Frame):
         self.exercise_list.config(yscrollcommand=exercise_scrolly.set)
 
         self.displayed_exercises = []
-        self.tags = self._get_all_tags()
+        self.tags = get_all_tags()
         self.selected_tag = None
         self._populate_tag_list()
         self._update_exercise_list()
@@ -134,14 +134,6 @@ class ExercisesTab(ttk.Frame):
 
 
     # ---------- TAG HANDLERS ----------
-    def _get_all_tags(self):
-        """Return a sorted list of all unique tags from exercises."""
-        exercises = search_exercises(None)
-        tags = set()
-        for ex in exercises:
-            tags.update(ex.get("tags", []))
-        return sorted(tags)
-
     def _populate_tag_list(self):
         """Fill the tag listbox with available tags."""
         self.tag_listbox.delete(0, tk.END)

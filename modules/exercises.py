@@ -14,6 +14,7 @@ def load_exercises():
 def save_exercises(exercises):
     save_json(EXERCISE_FILE, exercises)
 
+
 def add_exercise(new_exercise):
     exercises = load_exercises()
     if any(ex["id"] == new_exercise["id"] for ex in exercises):
@@ -47,6 +48,7 @@ def remove_exercise(exercise_id):
     save_exercises(updated)
     return exercise_id
 
+
 def get_exercise_by_id(exercise_id):
     exercises = load_exercises()
     for ex in exercises:
@@ -54,7 +56,16 @@ def get_exercise_by_id(exercise_id):
             return ex
     return None
 
+def get_all_tags():
+    """Return a sorted list of all unique tags from exercises."""
+    exercises = search_exercises(None)
+    tags = set()
+    for ex in exercises:
+        tags.update(ex.get("tags", []))
+    return sorted(tags)
+
 def search_exercises(query=None, sort_alpha=True):
+    """Returns list of exercises matching query. If querry=None, returns the whole list."""
     exercises = load_exercises()
     if not exercises:
         return []
@@ -73,6 +84,7 @@ def search_exercises(query=None, sort_alpha=True):
 
     return filtered
 
+
 def build_metric(data, key, default_unit=None):
     metric = data.get(key, {})
     val = {
@@ -90,15 +102,15 @@ def normalize_exercise_data(data, existing_id=None):
     ex_id = existing_id or data["title"].lower().replace(" ", "_")
 
     return {
-    "id": ex_id,
-    "title": data["title"],
-    "description": data.get("description", ""),
-    "tags": data.get("tags", []) if isinstance(data.get("tags", []), list) else [], # ensures tags is a list object
-    "weight": build_metric(data, "weight", "kg"),
-    "reps": build_metric(data, "reps"),
-    "sets": build_metric(data, "sets"),
-    "time": build_metric(data, "time", "sec"),
-    "distance": build_metric(data, "distance", "m"),
-    "created_at": data.get("created_at", now),
+    "id":           ex_id,
+    "title":        data["title"],
+    "description":  data.get("description", ""),
+    "tags":         data.get("tags", []) if isinstance(data.get("tags", []), list) else [], # ensures tags is a list object
+    "weight":       build_metric(data, "weight", "kg"),
+    "reps":         build_metric(data, "reps"),
+    "sets":         build_metric(data, "sets"),
+    "time":         build_metric(data, "time", "sec"),
+    "distance":     build_metric(data, "distance", "m"),
+    "created_at":   data.get("created_at", now),
     "last_updated": now,
     }

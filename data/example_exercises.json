@@ -1,0 +1,243 @@
+[
+    {                          
+        "id": "deadlift",
+        "title": "Deadlift",
+        "description": "Pick it up bro",
+        "tags": [
+            "legs",
+            "compound",
+            "lower-back"
+        ],
+        "weight": {
+            "has": true,
+            "default": 60.0,
+            "goal": 80.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8,
+            "goal": 10
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-15T08:39:03",
+        "last_updated": "2025-10-19T18:45:33"
+    },
+    {
+        "id": "squats",
+        "title": "Squats",
+        "description": "squatting",
+        "tags": [
+            "legs",
+            "compound"
+        ],
+        "weight": {
+            "has": true,
+            "default": 50.0,
+            "goal": 70.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 10,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-18T15:10:08",
+        "last_updated": "2025-10-18T15:10:19"
+    },
+    {
+        "id": "bench_press",
+        "title": "Bench Press",
+        "description": "Classic chest exercise for upper body strength.",
+        "tags": [
+            "chest",
+            "compound",
+            "upper-body",
+            "strength"
+        ],
+        "weight": {
+            "has": true,
+            "default": 50.0,
+            "goal": 60.0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8.0,
+            "goal": 10.0
+        },
+        "sets": {
+            "has": true,
+            "default": 3.0,
+            "goal": 4.0
+        },
+        "time": {
+            "has": false,
+            "default": 0.0,
+            "goal": 0.0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0.0,
+            "goal": 0.0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-20T12:13:19",
+        "last_updated": "2025-10-20T12:13:19"
+    },
+    {
+        "id": "pull_ups",
+        "title": "Pull-Ups",
+        "description": "Bodyweight exercise for back and biceps.",
+        "tags": [
+            "upper-body",
+            "bodyweight",
+            "back",
+            "biceps"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": true,
+            "default": 8,
+            "goal": 12
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 4
+        },
+        "time": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-19T09:11:00",
+        "last_updated": "2025-10-19T09:11:00"
+    },
+    {
+        "id": "plank",
+        "title": "Plank",
+        "description": "Core stability exercise for endurance and posture.",
+        "tags": [
+            "core",
+            "stability",
+            "bodyweight"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": true,
+            "default": 3,
+            "goal": 3
+        },
+        "time": {
+            "has": true,
+            "default": 60,
+            "goal": 90,
+            "unit": "sec"
+        },
+        "distance": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "m"
+        },
+        "created_at": "2025-10-19T09:12:00",
+        "last_updated": "2025-10-19T09:12:00"
+    },
+    {
+        "id": "running",
+        "title": "Running",
+        "description": "Cardio exercise to improve endurance and heart health.",
+        "tags": [
+            "cardio",
+            "endurance",
+            "legs"
+        ],
+        "weight": {
+            "has": false,
+            "default": 0,
+            "goal": 0,
+            "unit": "kg"
+        },
+        "reps": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "sets": {
+            "has": false,
+            "default": 0,
+            "goal": 0
+        },
+        "time": {
+            "has": true,
+            "default": 30,
+            "goal": 45,
+            "unit": "min"
+        },
+        "distance": {
+            "has": true,
+            "default": 5,
+            "goal": 8,
+            "unit": "km"
+        },
+        "created_at": "2025-10-19T09:13:00",
+        "last_updated": "2025-10-19T09:13:00"
+    }
+]
