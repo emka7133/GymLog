@@ -4,7 +4,6 @@ from tkinter import ttk
 from tabs.exercises_tab import ExercisesTab
 from tabs.workout_tab import WorkoutTab
 from tabs.logs_tab import LogsTab
-from tabs.settings_tab import SettingsTab   
 
 # ---------- MAIN ----------
 class GymLogApp(tk.Tk):
@@ -30,14 +29,14 @@ class GymLogApp(tk.Tk):
             ("Exercise Bank", ExercisesTab(self.tab_control)),
             ("Workout Tracker", WorkoutTab(self.tab_control)),
             ("Logs", LogsTab(self.tab_control)),
-            ("Settings", SettingsTab(self.tab_control))
         ]
 
         for text, frame in self.tabs:
             self.tab_control.add(frame, text=text)
 
-        # Configure tab style to stretch
+        # Configure tab style to stretch and start in the middle tab
         self.style = style
+        self.tab_control.select(1)
         self.update_tab_widths()
         self.tab_control.bind("<Configure>", self.on_resize)  # update widths on resize 
         

@@ -43,7 +43,7 @@ class ExercisesTab(ttk.Frame):
         # Exercise list
         self.exercise_list = tk.Listbox(main_frame, height=15, width=30)
         self.exercise_list.pack(side="left", fill="both", padx=(10, 10), expand=True)
-        self.exercise_list.bind("<Button-1>", self._on_exercise_clicked)
+        self.exercise_list.bind("<Double-Button-1>", self._on_exercise_clicked)
 
         # ExerciceBox scrollbar
         exercise_scrolly = tk.Scrollbar(main_frame, orient="vertical", command=self.exercise_list.yview)
