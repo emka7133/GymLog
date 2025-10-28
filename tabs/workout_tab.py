@@ -12,17 +12,29 @@ class WorkoutTab(ttk.Frame):
         self.current_workout = {}
         self.current_workout_list = []
 
+        # title
         self.title_frame = ttk.Frame(self)
         self.title_frame.pack(padx = 5, pady = 20)
         
         # select exercise button
         ttk.Button(self.title_frame, text="Select Exercise", command = self.open_exercise_selector).pack()
 
-        #top side
+        # top side
         self.top_frame = ttk.Frame(self)
         self.top_frame.pack()
-        
+
         self.id_to_exercise = {}
+        self.selection = ""
+
+        # bottom side
+        self.bottom_frame = ttk.Frame(self)
+        self.bottom_frame.pack(expand = True, fill = "both", padx=10, pady=10)
+        
+        self.current_exercise_list = tk.Listbox(self.bottom_frame)
+        self.current_exercise_list.pack(fill = "both", expand = True)
+
+
+        ttk.Button(self.bottom_frame, text="Save", command=lambda: add_workout(self.current_workout)).pack()
         
         
     # select exercise pop-up window
@@ -46,56 +58,47 @@ class WorkoutTab(ttk.Frame):
             exercise_ids.append(i["id"])
 
         def confirm_selection():
-            
-            # make a list of chosen exercise ids
-            selection = exercise_list.curselection()
-            selected_ids = [exercise_ids[i] for i in selection]
+            selected_index = exercise_list.curselection()
 
-            # update exercise list in main tab
-            self.exercise_listbox.delete(0, tk.END)
-            for id in selected_ids:
-                self.exercise_listbox.insert(tk.END, self.id_to_exercise[id]["title"])
-
-
+            self.selection = self.exercises[selected_index[0]]
             selector.destroy()
+            print("confirm")
+            self.show_exercise_details()
 
             # I want to make a dictionary json file with the selected exercises
+
 
         ttk.Button(selector, text = "Confirm", command = confirm_selection).pack(pady = 10)
 
 
-    def show_exercise_details(self, event):
-        
-        if not hasattr(self, self.top_frame):
-            return
+    def show_exercise_details(self):
 
-        selection = self.exercise_listbox.curselection()
-
-        index = selection[0]
-        selected_title = self.exercise_listbox.get(index)
-        
+        print("show")
         current_exercise = {}        
 
 
         # find the data for the selected exercise
-        for ex in self.exercises:
-            if ex["title"] == selected_title:
-                data = ex
+        ex = self.selection
 
-                current_exercise["exercise_id"] = ex["id"]
-
-                info = {
-                    "weight": ex["weight"]["default"],
-                    "reps": ex["reps"]["default"],
-                    "sets": ex["sets"]["default"]
-                }
-                current_exercise["info"] = info
-                break
-        else:
-            return
+        current_exercise = {
+            "exercise_id": ex["id"],
+            "info": {
+                "weight": ex["weight"]["default"],
+                "reps": ex["reps"]["default"],
+                "sets": ex["sets"]["default"],
+            },
+        }
         
-        self.current_workout["id"] = datetime.now().isoformat(timespec="seconds")
-        self.current_workout["exercises"] = self.current_workout_list
+        def add_exercise():
+            self.current_workout["id"] = datetime.now().isoformat(timespec="seconds")
+            self.current_workout["exercises"] = self.current_workout_list
+
+            self.current_workout_list.append(current_exercise)
+
+            self.current_exercise_list.insert(tk.END, ex["title"])
+
+            
+        
 
         # refresh screen
         for widget in self.top_frame.winfo_children():
@@ -103,7 +106,7 @@ class WorkoutTab(ttk.Frame):
 
 
 
-        ttk.Label(self.top_frame, text = data["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 0, columnspan = 3, pady = 10)
+        ttk.Label(self.top_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 0, columnspan = 3, pady = 10)
 
         ttk.Label(self.top_frame, text = "Weight ").grid(row=1, column=1)
         ttk.Label(self.top_frame, text = "Reps").grid(row=1, column=2)
@@ -132,11 +135,14 @@ class WorkoutTab(ttk.Frame):
             
             weight_entry = ttk.Entry(self.top_frame, width=8)
             reps_entry = ttk.Entry(self.top_frame, width=8)
+
+            current_exercise["weight"] = weight_entry.get()
                         
             weight_entry.grid(row = i*2 + 3, column = 1, padx = 5, pady = (0, 5))
             reps_entry.grid(row = i*2+3, column = 2, padx = 5, pady = (0, 5))
             
             self.entries.append((weight_entry, reps_entry))  
 
-        ttk.Button(self.top_frame, text="Add", command=lambda: self.current_workout_list.append(current_exercise) ).grid(row = i*2+4, column = 1, padx = 5, pady = (0,5))
-        ttk.Button(self.top_frame, text="Save", command=lambda: add_workout(self.current_workout)).grid(row = i*2+4, column = 0, padx = 5, pady = (0,5))
+        ttk.Button(self.top_frame, text="Add", command=add_exercise).grid(row = i*2+4, column = 2, padx = 10, pady = 10)
+        
+        #ttk.Button(self.top_frame, text="Save", command=lambda: add_workout(self.current_workout)).grid(row = i*2+4, column = 0, padx = 5, pady = (0,5))
