@@ -30,9 +30,25 @@ class WorkoutTab(ttk.Frame):
         self.current_exercise_list.pack(fill = "both", expand = True)
 
 
-        ttk.Button(self.left_frame, text="Save", command=lambda: add_workout(self.current_workout)).pack(pady = 20)
+        ttk.Button(
+            self.left_frame, 
+            text="Save Workout", 
+            command=lambda: [add_workout(self.current_workout), self.reset_workout_tab()]).pack(pady = 20)
         
         
+    #reset window after a workout is saved
+    def reset_workout_tab(self):
+
+        self.current_exercise_list.delete(0, tk.END)
+
+        for widget in self.right_frame.winfo_children():
+            widget.destroy()
+        
+        self.current_workout = {}
+        self.current_workout_list = []
+    
+    
+
     # select exercise pop-up window
     def open_exercise_selector(self):
         
@@ -129,11 +145,13 @@ class WorkoutTab(ttk.Frame):
                 
                 prev = previous_sets[i]
                 
+                #previous workout weight
                 ttk.Label(
                     self.right_frame,
                     text=f" {prev['weight']} kg", foreground="gray"
                 ).grid(row = i*2+2, column = 1, sticky = "w", padx = 5, pady = (5, 0))
 
+                #previous workout reps
                 ttk.Label(
                     self.right_frame,
                     text=f" {prev['reps']} reps", foreground="gray"
