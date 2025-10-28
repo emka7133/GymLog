@@ -111,7 +111,7 @@ class WorkoutTab(ttk.Frame):
         for widget in self.right_frame.winfo_children():
             widget.destroy()
 
-        ttk.Label(self.right_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 0, columnspan = 3, pady = (20,10))
+        ttk.Label(self.right_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 1, columnspan = 3, padx = 5,pady = (20,10))
 
         ttk.Label(self.right_frame, text = "Weight ").grid(row=1, column=1)
         ttk.Label(self.right_frame, text = "Reps").grid(row=1, column=2)
@@ -123,7 +123,7 @@ class WorkoutTab(ttk.Frame):
         
         for i in range(set_number):
             
-            ttk.Label(self.right_frame, text=str(i + 1)).grid(row = i*2+2, column = 0, sticky = "w", pady = (5, 0))
+            ttk.Label(self.right_frame, text=str(i + 1)).grid(row = i*2 + 3, column = 0, padx = 5, pady = (0, 5))
             
             if i < len(previous_sets):
                 
@@ -131,8 +131,13 @@ class WorkoutTab(ttk.Frame):
                 
                 ttk.Label(
                     self.right_frame,
-                    text=f" {prev['weight']} kg x {prev['reps']} reps", foreground="gray"
-                ).grid(row = i*2+2, column = 1, columnspan = 2, sticky = "w")
+                    text=f" {prev['weight']} kg", foreground="gray"
+                ).grid(row = i*2+2, column = 1, sticky = "w", padx = 5, pady = (5, 0))
+
+                ttk.Label(
+                    self.right_frame,
+                    text=f" {prev['reps']} reps", foreground="gray"
+                ).grid(row = i*2+2, column = 2, sticky = "w", padx = 5, pady = (5, 0))
             
             weight_entry = ttk.Entry(self.right_frame, width=8)
             reps_entry = ttk.Entry(self.right_frame, width=8)
@@ -144,4 +149,4 @@ class WorkoutTab(ttk.Frame):
             
             self.entries.append((weight_entry, reps_entry))  
 
-        ttk.Button(self.right_frame, text="Add", command=add_exercise).grid(row = i*2+4, column = 2, padx = 10, pady = 10)
+        ttk.Button(self.right_frame, text="Add", command=add_exercise).grid(row = i*2+4, column = 1, columnspan=3, padx = 5, pady = 10)
