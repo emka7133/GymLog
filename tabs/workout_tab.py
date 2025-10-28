@@ -58,7 +58,6 @@ class WorkoutTab(ttk.Frame):
 
             self.selection = self.exercises[selected_index[0]]
             selector.destroy()
-            print("confirm")
             self.show_exercise_details()
 
 
@@ -73,19 +72,13 @@ class WorkoutTab(ttk.Frame):
         # find the data for the selected exercise
         ex = self.selection
 
-        current_exercise = {
-            "exercise_id": ex["id"],
-            "info": {
-                "weight": ex["weight"]["default"],
-                "reps": ex["reps"]["default"],
-                "sets": ex["sets"]["default"],
-            },
-        }
+        current_exercise = {"exercise_id": ex["id"]}    
         
         def add_exercise():
             
             sets = []
 
+            #go through self.entries and add the values to sets list
             for weight_entry, reps_entry in self.entries:
                 weight = weight_entry.get()
                 reps = reps_entry.get()
@@ -96,15 +89,14 @@ class WorkoutTab(ttk.Frame):
                         "reps": int(reps)
                     })
             
-            #empty default values
-            current_exercise.pop("info", None)
-            current_exercise.pop("weight", None)
-
+            #add stuff to current_exercise dictionary
             current_exercise["sets"] = sets
             current_exercise["exercise_id"] = ex["id"]
             current_exercise["title"] = ex["title"]
 
+            #append dictionarry to current workout list
             self.current_workout_list.append(current_exercise)
+
 
             self.current_workout = {
                 "id": datetime.now().isoformat(timespec="seconds"),
@@ -112,6 +104,7 @@ class WorkoutTab(ttk.Frame):
                 "exercises": self.current_workout_list
             }
 
+            #add the added exercise to listbox
             self.current_exercise_list.insert(tk.END, ex["title"])        
 
         # refresh screen
@@ -123,11 +116,7 @@ class WorkoutTab(ttk.Frame):
         ttk.Label(self.right_frame, text = "Weight ").grid(row=1, column=1)
         ttk.Label(self.right_frame, text = "Reps").grid(row=1, column=2)
 
-        previous_sets = [
-            {"weight": 50, "reps": 10},
-            {"weight": 55, "reps": 8},
-            {"weight": 60, "reps": 6},
-        ]
+        previous_sets = get_previous_sets(ex["id"])
 
         set_number = 3
         self.entries = []
@@ -156,5 +145,3 @@ class WorkoutTab(ttk.Frame):
             self.entries.append((weight_entry, reps_entry))  
 
         ttk.Button(self.right_frame, text="Add", command=add_exercise).grid(row = i*2+4, column = 2, padx = 10, pady = 10)
-        
-        #ttk.Button(self.right_frame, text="Save", command=lambda: add_workout(self.current_workout)).grid(row = i*2+4, column = 0, padx = 5, pady = (0,5))

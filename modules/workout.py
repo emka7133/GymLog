@@ -20,3 +20,15 @@ def add_workout(new_workout):
     updated, added = add(workout, new_workout)
     save_workout(updated)
     return added
+
+def get_previous_sets(exercise_id):
+    workouts = load_workout()
+
+    #check workouts file in reverse order and load 
+    #the latest one with the matching id
+    for workout in reversed(workouts):
+        for exercise in workout.get("exercises", []):
+            if exercise.get("exercise_id") == exercise_id:
+                return exercise.get("sets", [])
+    return []
+
