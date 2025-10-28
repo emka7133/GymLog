@@ -108,9 +108,6 @@ class WorkoutTab(ttk.Frame):
                     "sets": ex["sets"]["default"]
                 }
                 current_exercise["info"] = info
-
-                self.current_workout_list.append(current_exercise) 
-
                 break
         else:
             return
@@ -159,4 +156,5 @@ class WorkoutTab(ttk.Frame):
             
             self.entries.append((weight_entry, reps_entry))  
 
+        ttk.Button(self.right_frame, text="Add", command=lambda: self.current_workout_list.append(current_exercise) ).grid(row = i*2+4, column = 1, padx = 5, pady = (0,5))
         ttk.Button(self.right_frame, text="Save", command=lambda: add_workout(self.current_workout)).grid(row = i*2+4, column = 0, padx = 5, pady = (0,5))
