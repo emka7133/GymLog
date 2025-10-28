@@ -67,7 +67,6 @@ class WorkoutTab(ttk.Frame):
 
     def show_exercise_details(self):
 
-        print("show")
         current_exercise = {}        
 
 
@@ -84,10 +83,34 @@ class WorkoutTab(ttk.Frame):
         }
         
         def add_exercise():
-            self.current_workout["id"] = datetime.now().isoformat(timespec="seconds")
-            self.current_workout["exercises"] = self.current_workout_list
+            
+            sets = []
+
+            for weight_entry, reps_entry in self.entries:
+                weight = weight_entry.get()
+                reps = reps_entry.get()
+
+                if weight and reps:
+                    sets.append({
+                        "weight": float(weight),
+                        "reps": int(reps)
+                    })
+            
+            #empty default values
+            current_exercise.pop("info", None)
+            current_exercise.pop("weight", None)
+
+            current_exercise["sets"] = sets
+            current_exercise["exercise_id"] = ex["id"]
+            current_exercise["title"] = ex["title"]
 
             self.current_workout_list.append(current_exercise)
+
+            self.current_workout = {
+                "id": datetime.now().isoformat(timespec="seconds"),
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "exercises": self.current_workout_list
+            }
 
             self.current_exercise_list.insert(tk.END, ex["title"])        
 
@@ -95,7 +118,7 @@ class WorkoutTab(ttk.Frame):
         for widget in self.right_frame.winfo_children():
             widget.destroy()
 
-        ttk.Label(self.right_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 0, columnspan = 3, pady = 10)
+        ttk.Label(self.right_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 0, columnspan = 3, pady = (20,10))
 
         ttk.Label(self.right_frame, text = "Weight ").grid(row=1, column=1)
         ttk.Label(self.right_frame, text = "Reps").grid(row=1, column=2)
