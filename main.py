@@ -54,4 +54,4 @@ class GymLogApp(tk.Tk):
 
 if __name__ == "__main__":
     app = GymLogApp()
-    app.mainloop()
+    app.mainloop()  

@@ -1,17 +1,47 @@
 [
     {
         "id": "",
-        "description": "",
-        "workouts": {
-            "workout_id1": "",
+        "exercises": {
+            "exercise_id1": "",
             "info": {
                 "weight": 0,
                 "reps": 0,
                 "sets": 0
-                },
-            "workout_id2":{}
+            },
+            "exercise_id2": ""
         },
         "created_at": "",
         "last_update": ""
+    },
+    {
+        "id": "2025-10-28T12:53:06",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "info": {
+                    "weight": 60.0,
+                    "reps": 8,
+                    "sets": 3
+                }
+            },
+            {
+                "exercise_id": "squats",
+                "info": {
+                    "weight": 50.0,
+                    "reps": 10,
+                    "sets": 3
+                }
+            },
+            {
+                "exercise_id": "deadlift",
+                "info": {
+                    "weight": 60.0,
+                    "reps": 8,
+                    "sets": 3
+                }
+            }
+        ],
+        "created_at": "2025-10-28T12:53:08",
+        "last_updated": "2025-10-28T12:53:08"
     }
 ]

@@ -1,16 +1,18 @@
-import json
-import tkinter as tk
-from tkinter import ttk
-
-
 import tkinter as tk
 from tkinter import ttk
 import json
+import datetime
+from modules.workout import *
 
 
 class WorkoutTab(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
+        self.current_workout = {}
+        self.current_workout_list = []
+
+
+        
 
         self.columnconfigure(0, weight = 1, uniform = "col")
         self.columnconfigure(1, weight = 2, uniform = "col")
@@ -72,7 +74,10 @@ class WorkoutTab(ttk.Frame):
             for id in selected_ids:
                 self.exercise_listbox.insert(tk.END, self.id_to_exercise[id]["title"])
 
+
             selector.destroy()
+
+            # I want to make a dictionary json file with the selected exercises
 
         ttk.Button(selector, text = "Confirm", command = confirm_selection).pack(pady = 10)
 
@@ -86,15 +91,33 @@ class WorkoutTab(ttk.Frame):
 
         index = selection[0]
         selected_title = self.exercise_listbox.get(index)
+        
+        current_exercise = {}        
+
 
         # find the data for the selected exercise
         for ex in self.exercises:
             if ex["title"] == selected_title:
                 data = ex
+
+                current_exercise["exercise_id"] = ex["id"]
+
+                info = {
+                    "weight": ex["weight"]["default"],
+                    "reps": ex["reps"]["default"],
+                    "sets": ex["sets"]["default"]
+                }
+                current_exercise["info"] = info
+
+                self.current_workout_list.append(current_exercise) 
+
                 break
         else:
             return
         
+        self.current_workout["id"] = datetime.now().isoformat(timespec="seconds")
+        self.current_workout["exercises"] = self.current_workout_list
+
         # refresh screen
         for widget in self.right_frame.winfo_children():
             widget.destroy()
@@ -135,3 +158,5 @@ class WorkoutTab(ttk.Frame):
             reps_entry.grid(row = i*2+3, column = 2, padx = 5, pady = (0, 5))
             
             self.entries.append((weight_entry, reps_entry))  
+
+        ttk.Button(self.right_frame, text="Save", command=lambda: add_workout(self.current_workout)).grid(row = i*2+4, column = 0, padx = 5, pady = (0,5))
