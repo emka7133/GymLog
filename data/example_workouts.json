@@ -1,0 +1,225 @@
+[
+    {
+        "id": "2025-10-28T23:14:12",
+        "date": "2025-10-28",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "sets": [
+                    {
+                        "weight": 50.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 50.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 60.0,
+                        "reps": 10
+                    }
+                ],
+                "title": "Deadlift"
+            },
+            {
+                "exercise_id": "squats",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 5
+                    }
+                ],
+                "title": "Squats"
+            }
+        ],
+        "created_at": "2025-10-28T23:14:13",
+        "last_updated": "2025-10-28T23:14:13"
+    },
+    {
+        "id": "2025-10-28T23:30:39",
+        "date": "2025-10-28",
+        "exercises": [
+            {
+                "exercise_id": "bench_press",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 22.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 22.5,
+                        "reps": 8
+                    }
+                ],
+                "title": "Bench Press"
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 12
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 12
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 12
+                    }
+                ],
+                "title": "Bicep Curl"
+            }
+        ],
+        "created_at": "2025-10-28T23:30:41",
+        "last_updated": "2025-10-28T23:30:41"
+    },
+    {
+        "id": "2025-10-29T00:19:23",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 60.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 60.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 60.0,
+                        "reps": 7
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T00:19:24",
+        "last_updated": "2025-10-29T00:19:24"
+    },
+    {
+        "id": "2025-10-29T00:19:23",
+        "date": "2025-10-30",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 65.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 65.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 65.0,
+                        "reps": 7
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T00:19:24",
+        "last_updated": "2025-10-29T00:19:24"
+    },
+    {
+        "id": "2025-10-29T00:19:23",
+        "date": "2025-10-31",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 70.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 70.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 70.0,
+                        "reps": 7
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T00:19:24",
+        "last_updated": "2025-10-29T00:19:24"
+    },
+    {
+        "id": "2025-10-29T00:19:23",
+        "date": "2025-11-01",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 65.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 65.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 65.0,
+                        "reps": 7
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T00:19:24",
+        "last_updated": "2025-10-29T00:19:24"
+    },
+    {
+        "id": "2025-10-29T00:19:23",
+        "date": "2025-11-02",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 70.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 70.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 70.0,
+                        "reps": 7
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T00:19:24",
+        "last_updated": "2025-10-29T00:19:24"
+    }
+]

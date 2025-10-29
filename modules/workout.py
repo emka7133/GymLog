@@ -25,7 +25,7 @@ def get_previous_sets(exercise_id):
     workouts = load_workout()
 
     #check workouts file in reverse order and load 
-    #the latest one with the matching id
+    #the sets info from the latest one with the matching id
     for workout in reversed(workouts):
         for exercise in workout.get("exercises", []):
             if exercise.get("exercise_id") == exercise_id:

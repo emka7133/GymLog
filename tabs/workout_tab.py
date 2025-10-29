@@ -13,7 +13,7 @@ class WorkoutTab(ttk.Frame):
         self.current_workout_list = []
 
         # title
-        self.left_frame = ttk.Frame(self, width = 150, height = 300)
+        self.left_frame = ttk.Frame(self, width = 100, height = 300)
         self.left_frame.pack(side='left', fill = 'y', padx = 20, pady = 20, expand = False)
         self.left_frame.pack_propagate(False)
 
