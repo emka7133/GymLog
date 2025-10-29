@@ -11,7 +11,7 @@ class LogsTab(ttk.Frame):
         super().__init__(parent)
 
         self.left_frame = ttk.Frame(self, width = 100, height = 300)
-        self.left_frame.pack(side='left', fill = 'y', padx = 20, pady = 20, expand = False)
+        self.left_frame.pack(side='left', fill = 'y', padx = (20,0), pady = 20, expand = False)
         self.left_frame.pack_propagate(False)
 
         self.right_frame = ttk.Frame(self)
@@ -50,7 +50,9 @@ class LogsTab(ttk.Frame):
         
         exercise_name = self.full_exercise_list.get(selection[0])
 
+        #x-axis list
         dates = []
+        #y-axis list
         weights = []
 
         for workout in self.workouts:
@@ -71,16 +73,20 @@ class LogsTab(ttk.Frame):
             widget.destroy()
 
         #create graph
-        figure = Figure(figsize=(5,3), dpi=100)
+        figure = Figure(figsize=(3,5), dpi=80)
         
         graph = figure.add_subplot(111)
         graph.plot(dates, weights, marker="o", linestyle = "-")
         
         graph.set_title(exercise_name)
-        graph.set_xlabel("Date")
-        graph.set_ylabel("Weight (kg)")
+        graph.set_facecolor("#f7f7f7")
+
+        figure.patch.set_facecolor("#f7f7f7")
 
         graph.grid(True)
+
+        figure.tight_layout()
+        figure.autofmt_xdate()
 
         #embed in tkinter
         canvas = FigureCanvasTkAgg(figure, master = self.right_frame)

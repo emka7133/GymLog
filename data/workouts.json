@@ -113,5 +113,32 @@
         ],
         "created_at": "2025-10-29T00:19:24",
         "last_updated": "2025-10-29T00:19:24"
+    },
+    {
+        "id": "2025-10-29T11:16:57",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "deadlift",
+                "weight": "",
+                "sets": [
+                    {
+                        "weight": 80.0,
+                        "reps": 5
+                    },
+                    {
+                        "weight": 80.0,
+                        "reps": 3
+                    },
+                    {
+                        "weight": 80.0,
+                        "reps": 1
+                    }
+                ],
+                "title": "Deadlift"
+            }
+        ],
+        "created_at": "2025-10-29T11:16:59",
+        "last_updated": "2025-10-29T11:16:59"
     }
 ]
