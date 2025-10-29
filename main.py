@@ -17,7 +17,7 @@ class GymLogApp(tk.Tk):
 
         # Style
         style = ttk.Style(self)
-        self.configure(bg="#f7f7f7")
+        #self.configure(bg="#f7f7f7")
         style.theme_use("clam")
 
         # Create tab control
@@ -39,7 +39,14 @@ class GymLogApp(tk.Tk):
         self.tab_control.select(1)
         self.update_tab_widths()
         self.tab_control.bind("<Configure>", self.on_resize)  # update widths on resize 
-        
+        self.tab_control.bind("<<NotebookTabChanged>>", self.on_tab_change)
+    
+    def on_tab_change(self, event):
+        selected_tab = event.widget.select()
+        tab = event.widget.nametowidget(selected_tab)
+        if isinstance(tab, LogsTab):
+            tab.exercise_select()
+
     def update_tab_widths(self):
         tab_count = len(self.tab_control.tabs())
         if tab_count == 0:

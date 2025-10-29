@@ -1,8 +1,9 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import json
 import datetime
 from modules.workout import *
+from tabs.logs_tab import LogsTab
 
 
 class WorkoutTab(ttk.Frame):
@@ -45,8 +46,7 @@ class WorkoutTab(ttk.Frame):
             widget.destroy()
         
         self.current_workout = {}
-        self.current_workout_list = []
-    
+        self.current_workout_list = []    
     
 
     # select exercise pop-up window
@@ -80,91 +80,121 @@ class WorkoutTab(ttk.Frame):
         ttk.Button(selector, text = "Confirm", command = confirm_selection).pack(pady = 10)
 
 
-    def show_exercise_details(self):
+    def show_exercise_details(self, set_number=1, entries=None):
+        if set_number < 1:
+            set_number = 1
 
-        current_exercise = {}        
-
-
-        # find the data for the selected exercise
         ex = self.selection
+        previous_sets = get_previous_sets(ex["id"])
 
-        current_exercise = {"exercise_id": ex["id"]}    
+        # Read current entries before destroying frame
+        preserved_values = []
+        if entries:
+            for weight_entry, reps_entry in entries:
+                preserved_values.append((weight_entry.get(), reps_entry.get()))
+
+        # Reset UI
+        for widget in self.right_frame.winfo_children():
+            widget.destroy()
+
+        ttk.Label(
+            self.right_frame,
+            text=ex["title"],
+            font=("Arial", 14, "bold")
+        ).grid(row=0, column=0, columnspan=3, pady=(20, 10))
+
+        ttk.Label(self.right_frame, text="Weight").grid(row=1, column=1)
+        ttk.Label(self.right_frame, text="Reps").grid(row=1, column=2)
+
+        self.entries = []
+
+        for i in range(set_number):
+            ttk.Label(self.right_frame, text=str(i + 1)).grid(row=i * 2 + 3, column=0, padx=5, pady=(0, 5))
+
+            # Show previous set (if exists)
+            if i < len(previous_sets):
+                prev = previous_sets[i]
+                ttk.Label(self.right_frame, text=f"{prev['weight']} kg", foreground="gray").grid(row=i*2+2, column=1, sticky="w", padx=5)
+                ttk.Label(self.right_frame, text=f"{prev['reps']} reps", foreground="gray").grid(row=i*2+2, column=2, sticky="w", padx=5)
+
+            # Create entry fields
+            weight_entry = ttk.Entry(self.right_frame, width=8)
+            reps_entry = ttk.Entry(self.right_frame, width=8)
+            weight_entry.grid(row=i*2+3, column=1, padx=5, pady=(0, 5))
+            reps_entry.grid(row=i*2+3, column=2, padx=5, pady=(0, 5))
+
+            # Restore preserved values if available
+            if i < len(preserved_values):
+                weight_entry.insert(0, preserved_values[i][0])
+                reps_entry.insert(0, preserved_values[i][1])
+
+            self.entries.append((weight_entry, reps_entry))
+
+        # Add and remove set buttons
+        ttk.Button(
+            self.right_frame,
+            text="+",
+            command=lambda: self.show_exercise_details(set_number=set_number + 1, entries=self.entries)
+        ).grid(row=set_number*2+4, column=1, padx=5, pady=10)
+
+        ttk.Button(
+            self.right_frame,
+            text="-",
+            command=lambda: self.show_exercise_details(set_number=set_number - 1, entries=self.entries)
+        ).grid(row=set_number*2+4, column=2, padx=5, pady=10)
+
+        # Add exercise button
         
         def add_exercise():
-            
             sets = []
+            invalid_entries = False
 
-            #go through self.entries and add the values to sets list
             for weight_entry, reps_entry in self.entries:
                 weight = weight_entry.get()
                 reps = reps_entry.get()
 
-                if weight and reps:
-                    sets.append({
-                        "weight": float(weight),
-                        "reps": int(reps)
-                    })
-            
-            #add stuff to current_exercise dictionary
-            current_exercise["sets"] = sets
-            current_exercise["exercise_id"] = ex["id"]
-            current_exercise["title"] = ex["title"]
+                # Validate input
+                if not weight or not reps:
+                    invalid_entries = True
+                    continue
 
-            #append dictionarry to current workout list
-            self.current_workout_list.append(current_exercise)
+                try:
+                    weight = float(weight)
+                    reps = int(reps)
+                except ValueError:
+                    messagebox.showwarning("Invalid entry", "Please enter valid numbers for weight and reps.")
+                    return
 
+                if reps <= 0:
+                    messagebox.showwarning("Invalid reps", "Reps must be greater than zero.")
+                    return
 
+                sets.append({"weight": weight, "reps": reps})
+
+            # Check for missing entries
+            if invalid_entries or not sets:
+                messagebox.showwarning("Incomplete entry", "Please fill in all weight and reps fields before adding.")
+                return
+
+            # Build exercise record
+            current_exercise = {
+                "exercise_id": ex["id"],
+                "title": ex["title"],
+                "sets": sets,
+            }
+
+            # Append
+            self.current_workout_list.append(current_exercise.copy())
+
+            # Update current workout summary
             self.current_workout = {
                 "id": datetime.now().isoformat(timespec="seconds"),
                 "date": datetime.now().strftime("%Y-%m-%d"),
-                "exercises": self.current_workout_list
+                "exercises": self.current_workout_list,
             }
 
-            #add the added exercise to listbox
-            self.current_exercise_list.insert(tk.END, ex["title"])        
-
-        # refresh screen
-        for widget in self.right_frame.winfo_children():
-            widget.destroy()
-
-        ttk.Label(self.right_frame, text = ex["title"], font = ("Arial", 14, "bold")).grid(row = 0, column = 1, columnspan = 3, padx = 5,pady = (20,10))
-
-        ttk.Label(self.right_frame, text = "Weight ").grid(row=1, column=1)
-        ttk.Label(self.right_frame, text = "Reps").grid(row=1, column=2)
-
-        previous_sets = get_previous_sets(ex["id"])
-
-        set_number = 3
-        self.entries = []
+            # Add exercise title to list
+            self.current_exercise_list.insert(tk.END, ex["title"])
         
-        for i in range(set_number):
-            
-            ttk.Label(self.right_frame, text=str(i + 1)).grid(row = i*2 + 3, column = 0, padx = 5, pady = (0, 5))
-            
-            if i < len(previous_sets):
-                
-                prev = previous_sets[i]
-                
-                #previous workout weight
-                ttk.Label(
-                    self.right_frame,
-                    text=f" {prev['weight']} kg", foreground="gray"
-                ).grid(row = i*2+2, column = 1, sticky = "w", padx = 5, pady = (5, 0))
+        ttk.Button(self.right_frame, text="Add", command=add_exercise).grid(row=set_number*2+5, column=0, columnspan=3, pady=10)
 
-                #previous workout reps
-                ttk.Label(
-                    self.right_frame,
-                    text=f" {prev['reps']} reps", foreground="gray"
-                ).grid(row = i*2+2, column = 2, sticky = "w", padx = 5, pady = (5, 0))
-            
-            weight_entry = ttk.Entry(self.right_frame, width=8)
-            reps_entry = ttk.Entry(self.right_frame, width=8)
-
-            current_exercise["weight"] = weight_entry.get()
-                        
-            weight_entry.grid(row = i*2 + 3, column = 1, padx = 5, pady = (0, 5))
-            reps_entry.grid(row = i*2+3, column = 2, padx = 5, pady = (0, 5))
-            
-            self.entries.append((weight_entry, reps_entry))  
-
-        ttk.Button(self.right_frame, text="Add", command=add_exercise).grid(row = i*2+4, column = 1, columnspan=3, padx = 5, pady = 10)
