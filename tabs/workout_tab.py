@@ -24,7 +24,6 @@ class WorkoutTab(ttk.Frame):
         # select exercise button
         ttk.Button(self.left_frame, text="Select Exercise", command = self.open_exercise_selector).pack(pady = 20)
 
-        self.id_to_exercise = {}
         self.selection = ""
         
         self.current_exercise_list = tk.Listbox(self.left_frame)
@@ -59,7 +58,9 @@ class WorkoutTab(ttk.Frame):
         # load exercise dictionary
         with open("data/exercises.json", mode = "r") as file:
             self.exercises = json.load(file)
-        self.id_to_exercise = {i["id"]: i for i in self.exercises}
+        
+        #alphabetical order
+        self.exercises.sort(key=lambda x: x["title"].lower())
 
         exercise_list = tk.Listbox(selector, selectmode = "browse")
         exercise_list.pack(expand = True, fill = "both", padx = 10, pady = 10)
