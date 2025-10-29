@@ -55,8 +55,9 @@ class LogsTab(ttk.Frame):
         weights = []
 
         for workout in self.workouts:
-            date = workout["date"]
+            
             true_date = workout["id"]
+            
             for exercise in workout["exercises"]:
                 if exercise["title"] == exercise_name:
                     # Average weight of all sets
@@ -80,7 +81,7 @@ class LogsTab(ttk.Frame):
         figure = Figure(figsize=(3, 5), dpi=80)
 
         graph = figure.add_subplot(111)
-        graph.plot(dates, weights, marker="none", linestyle="-", color="#4a7d8c")        
+        graph.plot(dates, weights, marker=".", markersize = 5, linestyle="-", color="#4a7d8c")        
 
         start_date = min(dates)
         end_date = max(dates)
