@@ -64,24 +64,6 @@
                     }
                 ],
                 "title": "Bench Press"
-            },
-            {
-                "exercise_id": "bicep_curl",
-                "sets": [
-                    {
-                        "weight": 5.0,
-                        "reps": 12
-                    },
-                    {
-                        "weight": 5.0,
-                        "reps": 12
-                    },
-                    {
-                        "weight": 5.0,
-                        "reps": 12
-                    }
-                ],
-                "title": "Bicep Curl"
             }
         ],
         "created_at": "2025-10-28T23:30:41",
@@ -237,28 +219,6 @@
         "last_updated": "2025-10-29T13:18:15"
     },
     {
-        "id": "2025-10-29T13:18:54",
-        "date": "2025-10-29",
-        "exercises": [
-            {
-                "exercise_id": "bicep_curl",
-                "title": "Bicep Curl",
-                "sets": [
-                    {
-                        "weight": 5.0,
-                        "reps": 10
-                    },
-                    {
-                        "weight": 10.0,
-                        "reps": 5
-                    }
-                ]
-            }
-        ],
-        "created_at": "2025-10-29T13:18:56",
-        "last_updated": "2025-10-29T13:18:56"
-    },
-    {
         "id": "2025-10-29T13:35:13",
         "date": "2025-10-29",
         "exercises": [
@@ -361,5 +321,1369 @@
         ],
         "created_at": "2025-10-29T13:51:43",
         "last_updated": "2025-10-29T13:51:43"
+    },
+    {
+        "id": "2025-07-07T19:57:30",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T19:57:31",
+        "last_updated": "2025-10-29T19:57:31"
+    },
+    {
+        "id": "2025-07-11T19:59:33",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 50.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 50.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 50.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T19:59:35",
+        "last_updated": "2025-10-29T19:59:35"
+    },
+    {
+        "id": "2025-07-15T20:02:03",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 8
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 55.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 55.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 55.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:02:04",
+        "last_updated": "2025-10-29T20:02:04"
+    },
+    {
+        "id": "2025-07-18T20:03:26",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 60.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 60.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 60.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:03:27",
+        "last_updated": "2025-10-29T20:03:27"
+    },
+    {
+        "id": "2025-07-22T20:04:39",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 8
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 2.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 80.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 80.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 80.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:04:39",
+        "last_updated": "2025-10-29T20:04:39"
+    },
+    {
+        "id": "2025-07-25T20:05:33",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 20.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 90.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 90.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 90.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:05:35",
+        "last_updated": "2025-10-29T20:05:35"
+    },
+    {
+        "id": "2025-07-29T20:06:51",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:06:51",
+        "last_updated": "2025-10-29T20:06:51"
+    },
+    {
+        "id": "2025-08-01T20:07:24",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 100.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:07:25",
+        "last_updated": "2025-10-29T20:07:25"
+    },
+    {
+        "id": "2025-08-03T20:08:43",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 25.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 5.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 110.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 110.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 110.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:08:44",
+        "last_updated": "2025-10-29T20:08:44"
+    },
+    {
+        "id": "2025-08-08T20:10:46",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 120.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 120.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 120.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:10:47",
+        "last_updated": "2025-10-29T20:10:47"
+    },
+    {
+        "id": "2025-08-15T20:11:52",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 130.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 130.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 130.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:11:53",
+        "last_updated": "2025-10-29T20:11:53"
+    },
+    {
+        "id": "2025-08-17T20:12:26",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:12:26",
+        "last_updated": "2025-10-29T20:12:26"
+    },
+    {
+        "id": "2025-08-20T20:13:31",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:13:31",
+        "last_updated": "2025-10-29T20:13:31"
+    },
+    {
+        "id": "2025-08-23T20:14:12",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 140.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:14:13",
+        "last_updated": "2025-10-29T20:14:13"
+    },
+    {
+        "id": "2025-08-29T20:15:19",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 30.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:15:20",
+        "last_updated": "2025-10-29T20:15:20"
+    },
+    {
+        "id": "2025-09-02T20:16:00",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 35.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 35.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 35.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:16:00",
+        "last_updated": "2025-10-29T20:16:00"
+    },
+    {
+        "id": "2025-09-05T20:17:24",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 10.0,
+                        "reps": 8
+                    },
+                    {
+                        "weight": 7.5,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:17:25",
+        "last_updated": "2025-10-29T20:17:25"
+    },
+    {
+        "id": "2025-09-10T20:18:20",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 145.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:18:21",
+        "last_updated": "2025-10-29T20:18:21"
+    },
+    {
+        "id": "2025-09-13T20:18:46",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 10.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:18:47",
+        "last_updated": "2025-10-29T20:18:47"
+    },
+    {
+        "id": "2025-09-17T20:20:03",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 150.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:20:04",
+        "last_updated": "2025-10-29T20:20:04"
+    },
+    {
+        "id": "2025-09-20T20:21:16",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 40.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:21:17",
+        "last_updated": "2025-10-29T20:21:17"
+    },
+    {
+        "id": "2025-09-24T20:22:13",
+        "date": "2025-10-29",
+        "exercises": [
+            {
+                "exercise_id": "tricep_pushdown",
+                "title": "Tricep Pushdown",
+                "sets": [
+                    {
+                        "weight": 45.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 45.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 45.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "bicep_curl",
+                "title": "Bicep Curl",
+                "sets": [
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 15.0,
+                        "reps": 10
+                    }
+                ]
+            },
+            {
+                "exercise_id": "leg_press",
+                "title": "Leg Press",
+                "sets": [
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    },
+                    {
+                        "weight": 155.0,
+                        "reps": 10
+                    }
+                ]
+            }
+        ],
+        "created_at": "2025-10-29T20:22:21",
+        "last_updated": "2025-10-29T20:22:21"
     }
 ]
