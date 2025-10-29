@@ -31,14 +31,15 @@ class LogsTab(ttk.Frame):
         with open("data/example_workouts.json", mode = "r") as file:
             self.workouts = json.load(file)
 
+        #(prevents duplicates)
         titles = set()
 
-        #add all titles to a set
+        #add all unique titles to a set
         for workout in self.workouts:
             for exercise in workout["exercises"]:
                 titles.add(exercise["title"])
 
-        #fill up the listbox with unique titles
+        #fill up the listbox
         for title in sorted(titles):
             self.full_exercise_list.insert(tk.END, title)
     
