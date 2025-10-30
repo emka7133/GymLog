@@ -62,13 +62,13 @@ class WorkoutTab(ttk.Frame):
         #alphabetical order
         self.exercises.sort(key=lambda x: x["title"].lower())
 
+        #make listbox
         exercise_list = tk.Listbox(selector, selectmode = "browse")
         exercise_list.pack(expand = True, fill = "both", padx = 10, pady = 10)
 
-        exercise_ids = []
+        #populate with titles from exercises file
         for i in self.exercises:
             exercise_list.insert(tk.END, i["title"])
-            exercise_ids.append(i["id"])
 
         def confirm_selection():
             selected_index = exercise_list.curselection()
@@ -115,8 +115,8 @@ class WorkoutTab(ttk.Frame):
             # Show previous set (if exists)
             if i < len(previous_sets):
                 prev = previous_sets[i]
-                ttk.Label(self.right_frame, text=f"{prev['weight']} kg", foreground="gray").grid(row=i*2+2, column=1, sticky="w", padx=5)
-                ttk.Label(self.right_frame, text=f"{prev['reps']} reps", foreground="gray").grid(row=i*2+2, column=2, sticky="w", padx=5)
+                ttk.Label(self.right_frame, text=f"{prev['weight']} kg", foreground="gray").grid(row=i*2+2, column=1, sticky="w", padx=20)
+                ttk.Label(self.right_frame, text=f"{prev['reps']} reps", foreground="gray").grid(row=i*2+2, column=2, sticky="w", padx=20)
 
             # Create entry fields
             weight_entry = ttk.Entry(self.right_frame, width=8)
