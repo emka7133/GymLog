@@ -103,7 +103,7 @@ class LogsTab(ttk.Frame):
         #pretty lines for each week
         for i in range(13): 
             week_line = start_date + timedelta(weeks=i)
-            graph.axvline(week_line, color="lightgray", linestyle="--", linewidth=0.4, zorder=0)
+            graph.axvline(week_line, color="lightgray", linestyle="-", linewidth=0.4, zorder=0)
 
         #x-axis labels: monday of each week
         graph.xaxis.set_major_locator(mdates.WeekdayLocator(byweekday=mdates.MONDAY, interval=1))
@@ -111,9 +111,9 @@ class LogsTab(ttk.Frame):
 
 
         graph.set_title(exercise_name)
-        graph.set_facecolor("#dcdad5")
+        graph.set_facecolor("#eae8e8")
         figure.patch.set_facecolor("#dcdad5")
-        graph.grid(True, zorder=-1)
+        graph.grid(True,axis='y', zorder=-1)
         figure.tight_layout()
         figure.autofmt_xdate()
 
